@@ -170,12 +170,17 @@ The following messages can be observed on MQTT:
 
 
 * Configuration of the threshold values:
-** Temperature threshold high
-** Temperature threshold low
-** Humidity threshold high
-** Humidity threshold low
-
-TODO: Insert format of all limit messages as reported by mosquitto_sub
++
+ plugin/led-strip/config {
+  "values": [
+      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
+      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
+      {"temperature": {"from": 26}, "color": [255, 0, 0, 0]},
+      {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
+      {"color": [255, 255, 255, 255]},
+  ],
+  "brightness":255
+}
 
 To run the system:
 
