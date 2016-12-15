@@ -1,0 +1,515 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Workroom Project</title>
+
+    <link href="/stylesheets/main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+  <a href="https://www.bigclown.com/">
+    <img src="/images/bigclown-logo.svg" alt="BigClown - Open-Source Electronics" class="header-logo" />
+  </a>
+</header>
+
+
+    <input type="checkbox" id="navbar-toggle" role="button" />
+<label for="navbar-toggle">
+  <span class="icon-burger"></span>
+</label>
+
+<nav class="navbar">
+  <ul>
+  <li class="level0">
+    <a href="/">Main page</a>
+  </li>
+  <li class="level1">
+    <a href="/academy/">Academy</a>
+      <ul>
+  <li class="level2">
+    <a href="/academy/clown-talk.html">Clown.Talk &amp; Clown.Model</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/i2c.html">I<sup>2</sup>C - Communication Interface</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/mqtt.html">MQTT - Messaging via Broker</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/websocket.html">WebSocket - Real-time Protocol</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/alpha/">ALPHA SET</a>
+      <ul>
+  <li class="level2">
+    <a href="/alpha/macos.html">Software setup for macOS</a>
+  </li>
+  <li class="level2">
+    <a href="/alpha/raspberry-pi.html">Software setup for Raspberry Pi</a>
+  </li>
+  <li class="level2">
+    <a href="/alpha/ubuntu.html">Software setup for Ubuntu</a>
+  </li>
+  <li class="level2">
+    <a href="/alpha/windows.html">Software setup for Windows</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/projects/">Projects</a>
+      <ul>
+  <li class="level2">
+    <a href="/projects/workroom.html" class="current">Workroom Project</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/tutorial/">Tutorials</a>
+      <ul>
+  <li class="level2">
+    <a href="/tutorial/blynk.html">Blynk - Mobile App Builder</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/ifttt.html">IFTTT - If This Then That</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/mosquitto.html">Mosquitto - MQTT Broker</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/node-red.html">Node RED - Visual Tool for IoT</a>
+  </li>
+</ul>
+
+  </li>
+</ul>
+
+</nav>
+
+
+    <div id="main-wrapper">
+      <div class="toolbar">
+  <ul class="toolbar-actions">
+    <li>
+      <a href="https://github.com/bigclownlabs/bc-doc/edit/master/source/projects/workroom.adoc" rel="external" title="Edit on GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon"><use xlink:href="#icon-pencil" /></svg><span class="icon-label">Improve this page</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      <article class="main-content projects projects_workroom">
+        <h1>
+          Workroom Project
+        </h1>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="videoblock">
+<div class="content">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/EFFVnbwtMNg?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With this setup you will be able to monitor environmental conditions in your workroom.
+Project will periodically measure relative humidity and temperature.
+If one of these values are out of proper range, project will indicate it on a programmable LED strip by a change of color.</p>
+</div>
+<div class="paragraph">
+<p>The color codes are as following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The color is green if the humidity is too high (&gt; 60%)</p>
+</li>
+<li>
+<p>The color is yellow if the humidity is too low (&lt; 30%)</p>
+</li>
+<li>
+<p>The color is red if the temperature is too high (&gt; 26°C)</p>
+</li>
+<li>
+<p>The color is blue if the temperature is too low (&lt; 22°C)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Any of these limit values can be adjusted in configuration (later we will show you how).
+Besides this primary function the project may also serve as a pleasant lighting on your desk or can be modified for other purposes.</p>
+</div>
+<div class="paragraph">
+<p>Workroom project consists of two units described below.</p>
+</div>
+<div class="sect2">
+<h3 id="_base_unit"><a class="anchor" href="#_base_unit"></a>Base unit</h3>
+<div class="paragraph">
+<p>This unit is responsible for driving of the LED strip and receiving wireless data from Remote unit.
+Wireless data are dispatched from Base unit to Raspberry Pi which decides about the color of the connected LED strip.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_remote_unit"><a class="anchor" href="#_remote_unit"></a>Remote unit</h3>
+<div class="paragraph">
+<p>Remote unit is a battery-operated wireless node measuring temperature and humidity and transmitting these data to Base unit in regular 30-second intervals.</p>
+</div>
+<div class="paragraph">
+<p>The whole concept is best described by the following diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/block-diagram.png" alt="block diagram">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_will_we_need"><a class="anchor" href="#_what_will_we_need"></a>What will we need?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All items can be purchased as a pre-installed set here. (TODO LINK)</p>
+</div>
+<div class="paragraph">
+<p>Individual components in the set are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2x Core Module</p>
+</li>
+<li>
+<p>1x Temperature Tag</p>
+</li>
+<li>
+<p>1x Humidity Tag</p>
+</li>
+<li>
+<p>1x Tag Module</p>
+</li>
+<li>
+<p>1x Power Module</p>
+</li>
+<li>
+<p>1x Battery Module</p>
+</li>
+<li>
+<p>2x Base Module</p>
+</li>
+<li>
+<p>1× LED strip RGBW (1m / 144 LEDs)</p>
+</li>
+<li>
+<p>1x Raspberry Pi 3</p>
+</li>
+<li>
+<p>1x 8 GB MicroSD card with pre-installed system</p>
+</li>
+<li>
+<p>1x Enclosure for Raspberry Pi 3</p>
+</li>
+<li>
+<p>1x USB 2.0 cable A/Micro-B</p>
+</li>
+<li>
+<p>1x Power adapter for Raspberry Pi 3</p>
+</li>
+<li>
+<p>1x Power adapter for Power Module</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/workroom-set.png" alt="workroom set">
+</div>
+</div>
+<div class="paragraph">
+<p>You will also need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Desktop/laptop computer</p>
+</li>
+<li>
+<p>Ethernet cable</p>
+</li>
+<li>
+<p>LAN router/switch with one available port</p>
+</li>
+<li>
+<p>Internet connectivity</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation_instructions"><a class="anchor" href="#_installation_instructions"></a>Installation instructions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can either follow the step-by-step instructions in the text below or watch this short video:</p>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe width="640" height="480" src="https://www.youtube.com/embed/Azui3VXtKJA?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also follow these step by step instructions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Build your Remote unit</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/build-remote.png" alt="build remote">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Build your Base unit</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/build-base.png" alt="build base">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Connect LED strip to Base unit</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/connect-led-strip.png" alt="connect led strip">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Connect Base unit to Raspberry Pi using MicroUSB cable</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/connect-base-to-rpi.png" alt="connect base to rpi">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Connect Ethernet cable to Raspberry Pi</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/connect-ethernet-to-rpi.png" alt="connect ethernet to rpi">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Connect power adapter to Base unit and plug it to AC-line</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/connect-power-to-base.png" alt="connect power to base">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Connect power adapter to Raspberry Pi and plug it to AC-line</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/connect-power-to-rpi.png" alt="connect power to rpi">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Insert batteries to your Remote unit</strong></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/insert-batteries.png" alt="insert batteries">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Activate pairing mode on Base unit</strong><br>
+Press and hold BOOT button on Core Module of Base unit until red LED on Core Module starts blinking.
+BOOT button is marked on Core Module with letter "B". Pairing mode on Base unit is now active until pairing signal is received from the Remote unit.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/pairing-base.png" alt="pairing base">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Transmit pairing signal on Remote unit</strong><br>
+Press and hold BOOT button on Core Module of Remote unit until red LED on Core Module lights up for two seconds.
+BOOT button is marked on Core Module with letter "B".
+Now pairing signal has been sent and Remote unit should stop blinking.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/pairing-remote.png" alt="pairing remote">
+</div>
+</div>
+</li>
+<li>
+<p><strong>Turn on the light</strong><br>
+Shortly press BOOT button either on Base unit or Remote unit to turn on the light.
+You can use this button any time you will want to turn the LED strip on or off.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/workroom/turn-on-light.png" alt="turn on light">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tweaking_hacking"><a class="anchor" href="#_tweaking_hacking"></a>Tweaking &amp; Hacking</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.
+Below you can find how to change them.</p>
+</div>
+<div class="paragraph">
+<p>The limits are evaluated by Python script.
+This Python script is running on Raspberry Pi in Linux (we use Raspbian as the official Linux distribution).
+All messages between Linux components in the system are exchanged via MQTT broker.
+MQTT broker is the heart of BigClown home automation system.</p>
+</div>
+<div class="paragraph">
+<p>If you want to know more about MQTT, follow these links:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../academy/mqtt.html">MQTT - Messaging via Broker</a></p>
+</li>
+<li>
+<p><a href="../tutorial/mosquitto.html">Mosquitto - MQTT Broker</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following messages can be observed on MQTT:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Measured temperature and humidity values reported by Remote unit</p>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_sub -v -t "node/remote/thermometer/i2c0-49"</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TODO: Insert format of both messages as reported by mosquitto_sub</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Desired color of the LED strip connected to Base unit</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TODO: Insert format of message as reported by mosquitto_sub</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configuration of the threshold values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Temperature threshold high</p>
+</li>
+<li>
+<p>Temperature threshold low</p>
+</li>
+<li>
+<p>Humidity threshold high</p>
+</li>
+<li>
+<p>Humidity threshold low</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>TODO: Insert format of all limit messages as reported by mosquitto_sub</p>
+</div>
+<div class="paragraph">
+<p>To run the system:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Connect to your Raspberry Pi via SSH (port 22) using:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows: Use <a href="http://www.putty.org">PuTTY</a></p>
+</li>
+<li>
+<p>Linux + macOS: Use ssh command in Terminal</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Default username is "pi" and password "raspberry"</p>
+</li>
+<li>
+<p>If you want to change the temperature alarm high, run this command:
+TODO: MQTT publish command (with retain flag)</p>
+</li>
+<li>
+<p>If you want to observe reported humidity (every 30 seconds), run this command:
+TODO: MQTT subscribe command</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+      </article>
+
+      <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</footer>
+
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1"
+     style="position: absolute; width: 0; height: 0; overflow: hidden;">
+  <defs>
+    <symbol id="icon-pencil" viewBox="0 0 28 32">
+      <title>pencil</title>
+      <path d="M22 2l-4 4 6 6 4-4-6-6zM0 24l0.021 6.018 5.979-0.018 16-16-6-6-16 16zM6 28h-4v-4h2v2h2v2z"/>
+    </symbol>
+  </defs>
+</svg>
+
+  </body>
+</html>
