@@ -1,4 +1,5 @@
 = Academy
+:page-nav-weight: 3
 
 It is BigClown's commitment and passion to not only deliver hardware components but also educate people in technologies and approaches in modern home automation.
 
