@@ -161,7 +161,6 @@ The following messages can be observed on MQTT:
  mosquitto_sub -v -t "node/remote/thermometer/i2c0-49"
  nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}
 +
- mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"
  nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}
 
 * Desired color of the LED strip connected to Base unit
@@ -177,7 +176,7 @@ The following messages can be observed on MQTT:
       {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
       {"temperature": {"from": 26}, "color": [255, 0, 0, 0]},
       {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
-      {"color": [255, 255, 255, 255]},
+      {"color": [0, 0, 0, 255]},
   ],
   "brightness":255
 }
@@ -188,7 +187,23 @@ To run the system:
 *  Windows: Use http://www.putty.org[PuTTY]
 *  Linux + macOS: Use ssh command in Terminal
 . Default username is "pi" and password "raspberry"
-. If you want to change the temperature alarm high, run this command:
-	TODO: MQTT publish command (with retain flag)
+. If you want to change the brightness, run this command:
++
+ mosquitto_pub -t "plugin/led-strip/config/set" -m '{"brightness": 255}'
+
 . If you want to observe reported humidity (every 30 seconds), run this command:
-	TODO: MQTT subscribe command
++
+ mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"
+
+. If you want to change the temperature alarm high, run this command:
++ 
+ mosquitto_pub -t "plugin/led-strip/config" -m '{
+  "values": [
+      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
+      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
+      {"temperature": {"from":30}, "color": [255, 0, 0, 0]},
+      {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
+      {"color": [0, 0, 0, 255]},
+  ],
+  "brightness":255
+}'
