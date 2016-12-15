@@ -37,3 +37,5 @@ end
 configure :build do
   activate :minify_css
 end
+
+redirect 'index.html', to: 'projects/index.html'
