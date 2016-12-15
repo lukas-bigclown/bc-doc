@@ -441,55 +441,41 @@ MQTT broker is the heart of BigClown home automation system.</p>
 <p>Measured temperature and humidity values reported by Remote unit</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_sub -v -t "node/remote/thermometer/i2c0-49"</pre>
+<pre>nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"</pre>
+<pre>nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}</pre>
 </div>
 </div>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>TODO: Insert format of both messages as reported by mosquitto_sub</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p>Desired color of the LED strip connected to Base unit</p>
+<div class="literalblock">
+<div class="content">
+<pre>nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}</pre>
+</div>
+</div>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>TODO: Insert format of message as reported by mosquitto_sub</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p>Configuration of the threshold values:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Temperature threshold high</p>
-</li>
-<li>
-<p>Temperature threshold low</p>
-</li>
-<li>
-<p>Humidity threshold high</p>
-</li>
-<li>
-<p>Humidity threshold low</p>
-</li>
-</ul>
+<div class="literalblock">
+<div class="content">
+<pre> plugin/led-strip/config {
+  "values": [
+      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
+      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
+      {"temperature": {"from": 26}, "color": [255, 0, 0, 0]},
+      {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
+      {"color": [0, 0, 0, 255]},
+  ],
+  "brightness":255
+}</pre>
+</div>
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>TODO: Insert format of all limit messages as reported by mosquitto_sub</p>
 </div>
 <div class="paragraph">
 <p>To run the system:</p>
@@ -513,12 +499,37 @@ MQTT broker is the heart of BigClown home automation system.</p>
 <p>Default username is "pi" and password "raspberry"</p>
 </li>
 <li>
-<p>If you want to change the temperature alarm high, run this command:
-TODO: MQTT publish command (with retain flag)</p>
+<p>If you want to change the brightness, run this command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_pub -t "plugin/led-strip/config/set" -m '{"brightness": 255}'</pre>
+</div>
+</div>
 </li>
 <li>
-<p>If you want to observe reported humidity (every 30 seconds), run this command:
-TODO: MQTT subscribe command</p>
+<p>If you want to observe reported humidity (every 30 seconds), run this command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you want to change the temperature alarm high, run this command:</p>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "plugin/led-strip/config" -m '{
+  "values": [
+      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
+      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
+      {"temperature": {"from":30}, "color": [255, 0, 0, 0]},
+      {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
+      {"color": [0, 0, 0, 255]},
+  ],
+  "brightness":255
+}'</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
