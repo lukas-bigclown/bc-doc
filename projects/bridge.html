@@ -1,0 +1,426 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>Bridge Project</title>
+
+    <link href="/stylesheets/main.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+  <a href="https://www.bigclown.com/">
+    <img src="/images/bigclown-logo.svg" alt="BigClown - Open-Source Electronics" class="header-logo" />
+  </a>
+</header>
+
+
+    <input type="checkbox" id="navbar-toggle" role="button" />
+<label for="navbar-toggle">
+  <span class="icon-burger"></span>
+</label>
+
+<nav class="navbar">
+  <ul>
+  <li class="level0">
+    <a href="/">Main page</a>
+  </li>
+  <li class="level1">
+    <a href="/academy/">Academy</a>
+      <ul>
+  <li class="level2">
+    <a href="/academy/clown-talk.html">Clown.Talk &amp; Clown.Model</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/i2c.html">I<sup>2</sup>C - Communication Interface</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/mqtt.html">MQTT - Messaging via Broker</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/websocket.html">WebSocket - Real-time Protocol</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/alpha/">ALPHA SET</a>
+      <ul>
+  <li class="level2">
+    <a href="/alpha/macos.html">Software setup for macOS</a>
+  </li>
+  <li class="level2">
+    <a href="/alpha/raspberry-pi.html">Software setup for Raspberry Pi</a>
+  </li>
+  <li class="level2">
+    <a href="/alpha/ubuntu.html">Software setup for Ubuntu</a>
+  </li>
+  <li class="level2">
+    <a href="/alpha/windows.html">Software setup for Windows</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/projects/">Projects</a>
+      <ul>
+  <li class="level2">
+    <a href="/projects/bridge.html" class="current">Bridge Project</a>
+  </li>
+  <li class="level2">
+    <a href="/projects/workroom.html">Workroom Project</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/tutorial/">Tutorials</a>
+      <ul>
+  <li class="level2">
+    <a href="/tutorial/blynk.html">Blynk - Mobile App Builder</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/ifttt.html">IFTTT - If This Then That</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/mosquitto.html">Mosquitto - MQTT Broker</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/node-red.html">Node RED - Visual Tool for IoT</a>
+  </li>
+</ul>
+
+  </li>
+</ul>
+
+</nav>
+
+
+    <div id="main-wrapper">
+      <div class="toolbar">
+  <ul class="toolbar-actions">
+    <li>
+      <a href="https://github.com/bigclownlabs/bc-doc/edit/master/source/projects/bridge.adoc" rel="external" title="Edit on GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon"><use xlink:href="#icon-pencil" /></svg><span class="icon-label">Improve this page</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      <article class="main-content projects projects_bridge">
+        <h1>
+          Bridge Project
+        </h1>
+        <div id="preamble">
+<div class="sectionbody">
+<div class="ulist no-bullet">
+<ul class="no-bullet">
+<li>
+<p></p>
+<div class="videoblock">
+<div class="content">
+<iframe width="738" height="400" src="https://www.youtube.com/embed/00WasmWBFjE?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_it"><a class="anchor" href="#_what_is_it"></a>What is it?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Bridge project is suitable for those, who would like to integrate our system with the 3rd party platforms or for those who are working on their own IoT or BigData projects.
+Bridge project allows you to quickly and easily connect our environmental sensors and/or actuators to your Raspberry Pi or any other Linux-based host.
+This provides a super-quick setup if you want to start processing your IoT data in the cloud or perform any data analytics.
+Bridge project is also suitable to teach general principles of home automation and used standards, e.g. MQTT.</p>
+</div>
+<div class="paragraph">
+<p>With this project you will be able to monitor environmental conditions like:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Temperature (with Temperature Tag bundled in the set)</p>
+</li>
+<li>
+<p>Humidity (with Humidity Tag bundled in the set)</p>
+</li>
+<li>
+<p>Luminosity (with Lux Meter Tag bundled in the set)</p>
+</li>
+<li>
+<p>Atmospheric pressure/altitude (with Barometer Tag bundled in the set)</p>
+</li>
+<li>
+<p>Carbon dioxide (CO<sup>2</sup>) concentration (with CO2 Module which is an optional item)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can also control relay through this web dashboard (with Relay Module) and control small appliances (LED strip, garage door opener, etc.).</p>
+</div>
+<div class="paragraph">
+<p>The hardware concept is best described by the following diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/bridge/block-diagram.png" alt="block diagram">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_will_we_need"><a class="anchor" href="#_what_will_we_need"></a>What will we need?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All items can be purchased as <a href="https://shop.bigclown.com/products/bridge-project-collection">pre-installed set</a> in our e-shop.</p>
+</div>
+<div class="paragraph">
+<p>Individual components in the set are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1× Bridge Module</p>
+</li>
+<li>
+<p>1x Tag Module</p>
+</li>
+<li>
+<p>1x Temperature Tag</p>
+</li>
+<li>
+<p>1x Humidity Tag</p>
+</li>
+<li>
+<p>1x Barometer Tag</p>
+</li>
+<li>
+<p>1x Lux Meter Tag</p>
+</li>
+<li>
+<p>1x Base Module</p>
+</li>
+<li>
+<p>1x Relay Module</p>
+</li>
+<li>
+<p>1x Raspberry Pi 3</p>
+</li>
+<li>
+<p>1x 8 GB MicroSD card with pre-installed system</p>
+</li>
+<li>
+<p>1x Enclosure for Raspberry Pi 3</p>
+</li>
+<li>
+<p>1x Power adapter for Raspberry Pi 3</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/bridge/bridge-set.png" alt="bridge set">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation_instructions"><a class="anchor" href="#_installation_instructions"></a>Installation instructions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can either follow step-by-step instructions in the text below or watch this short video:</p>
+</div>
+<div class="ulist no-bullet">
+<ul class="no-bullet">
+<li>
+<p></p>
+<div class="videoblock">
+<div class="content">
+<iframe width="738" height="400" src="https://www.youtube.com/embed/J5jmx7RoLnY?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build the Bridge node<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/bridge/build-bridge.png" alt="build bridge">
+</div>
+</div>
+</li>
+<li>
+<p>Connect Bridge Module to Raspberry Pi using MicroUSB cable<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/bridge/connect-bridge-to-rpi.png" alt="connect bridge to rpi">
+</div>
+</div>
+</li>
+<li>
+<p>Connect Ethernet cable to Raspberry Pi<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/bridge/connect-ethernet-to-rpi.png" alt="connect ethernet to rpi">
+</div>
+</div>
+</li>
+<li>
+<p>Connect power adapter to Raspberry Pi and plug it to AC-line<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/bridge/connect-power-to-rpi.png" alt="connect power to rpi">
+</div>
+</div>
+</li>
+<li>
+<p>Wait until the Raspberry Pi boots up (approximately 30 seconds)</p>
+</li>
+<li>
+<p>Open in your browser <a href="http://hub.local:8080" class="bare">http://hub.local:8080</a> or
+enter your local IP address <a href="http://x.x.x.x:8080" class="bare">http://x.x.x.x:8080</a> (how to find Raspberry Pi IP)</p>
+</li>
+<li>
+<p>Dashboard shows all measured values, you can also control relay output with a button.<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/bridge/dashboard.png" alt="dashboard">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tweaking_hacking"><a class="anchor" href="#_tweaking_hacking"></a>Tweaking &amp; Hacking</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Next step is to login to Raspberry Pi via SSH terminal so we can later play with MQTT messages.
+Again, use <a href="http://hub.local" class="bare">http://hub.local</a> or the IP from the previous chapter.</p>
+</div>
+<div class="sect2">
+<h3 id="_ssh_from_windows_desktop"><a class="anchor" href="#_ssh_from_windows_desktop"></a>SSH from Windows desktop</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download PuTTY.</p>
+</li>
+<li>
+<p>Open PuTTY and open SSH session:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For hostname use <code>hub.local</code> or <code><em>IP-address-of-Raspberry-Pi</em></code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use username: <code>pi</code></p>
+</li>
+<li>
+<p>Use password: <code>raspberry</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ssh_from_os_x_linux_desktop"><a class="anchor" href="#_ssh_from_os_x_linux_desktop"></a>SSH from OS X &amp; Linux desktop</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Terminal and connect to Raspberry Pi:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Using IP address: <code>ssh pi@<em>IP-address-of-Raspberry-Pi</em></code></p>
+</li>
+<li>
+<p>Using zeroconf name: <code>ssh pi@hub.local</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use username: <code>pi</code></p>
+</li>
+<li>
+<p>Use password: <code>raspberry</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mqtt_playground"><a class="anchor" href="#_mqtt_playground"></a>MQTT playground</h3>
+<div class="paragraph">
+<p>Look at measured values (this will subscribe to messages from MQTT broker running inside the Docker container):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker exec hub mosquitto_sub -v -t 'nodes/bridge/0/#'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Set relay to “true” state (this will publish message to MQTT broker running inside the container):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker exec hub mosquitto_pub -t nodes/bridge/0/relay/i2c0-3b/set -m '{"state": true}'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Set relay to “false” state:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker exec hub mosquitto_pub -t nodes/bridge/0/relay/i2c0-3b/set -m '{"state": false}'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to know more about MQTT, follow these links:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../academy/mqtt.html">MQTT - Messaging via Broker</a></p>
+</li>
+<li>
+<p><a href="../tutorial/mosquitto.html">Mosquitto - MQTT Broker</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+      </article>
+
+      <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</footer>
+
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1"
+     style="position: absolute; width: 0; height: 0; overflow: hidden;">
+  <defs>
+    <symbol id="icon-pencil" viewBox="0 0 28 32">
+      <title>pencil</title>
+      <path d="M22 2l-4 4 6 6 4-4-6-6zM0 24l0.021 6.018 5.979-0.018 16-16-6-6-16 16zM6 28h-4v-4h2v2h2v2z"/>
+    </symbol>
+  </defs>
+</svg>
+
+  </body>
+</html>
