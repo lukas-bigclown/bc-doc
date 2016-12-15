@@ -1,0 +1,178 @@
+= Workroom Project
+:imagesdir: images/workroom
+
+video::EFFVnbwtMNg[youtube, width=640, height=480]
+
+== What is it?
+
+With this setup you will be able to monitor environmental conditions in your workroom.
+Project will periodically measure relative humidity and temperature.
+If one of these values are out of proper range, project will indicate it on a programmable LED strip by a change of color.
+
+The color codes are as following:
+
+* The color is green if the humidity is too high (> 60%)
+* The color is yellow if the humidity is too low (< 30%)
+* The color is red if the temperature is too high (> 26°C)
+* The color is blue if the temperature is too low (< 22°C)
+
+Any of these limit values can be adjusted in configuration (later we will show you how).
+Besides this primary function the project may also serve as a pleasant lighting on your desk or can be modified for other purposes.
+
+Workroom project consists of two units described below.
+
+
+=== Base unit
+
+This unit is responsible for driving of the LED strip and receiving wireless data from Remote unit.
+Wireless data are dispatched from Base unit to Raspberry Pi which decides about the color of the connected LED strip.
+
+
+=== Remote unit
+
+Remote unit is a battery-operated wireless node measuring temperature and humidity and transmitting these data to Base unit in regular 30-second intervals.
+
+The whole concept is best described by the following diagram:
+
+image::block-diagram.png[]
+
+
+== What will we need?
+
+All items can be purchased as a pre-installed set here. (TODO LINK)
+
+Individual components in the set are:
+
+* 2x Core Module
+* 1x Temperature Tag
+* 1x Humidity Tag
+* 1x Tag Module
+* 1x Power Module
+* 1x Battery Module
+* 2x Base Module
+* 1× LED strip RGBW (1m / 144 LEDs)
+* 1x Raspberry Pi 3
+* 1x 8 GB MicroSD card with pre-installed system
+* 1x Enclosure for Raspberry Pi 3
+* 1x USB 2.0 cable A/Micro-B
+* 1x Power adapter for Raspberry Pi 3
+* 1x Power adapter for Power Module
+
+image::workroom-set.png[]
+
+You will also need:
+
+* Desktop/laptop computer
+* Ethernet cable
+* LAN router/switch with one available port
+* Internet connectivity
+
+
+== Installation instructions
+
+You can either follow the step-by-step instructions in the text below or watch this short video:
+
+video::Azui3VXtKJA[youtube, width=640, height=480]
+
+You can also follow these step by step instructions:
+
+. *Build your Remote unit*
++
+image::build-remote.png[]
++
+. *Build your Base unit*
++
+image::build-base.png[]
++
+. *Connect LED strip to Base unit*
++
+image::connect-led-strip.png[]
++
+. *Connect Base unit to Raspberry Pi using MicroUSB cable*
++
+image::connect-base-to-rpi.png[]
++
+. *Connect Ethernet cable to Raspberry Pi*
++
+image::connect-ethernet-to-rpi.png[]
++
+. *Connect power adapter to Base unit and plug it to AC-line*
++
+image::connect-power-to-base.png[]
++
+. *Connect power adapter to Raspberry Pi and plug it to AC-line*
++
+image::connect-power-to-rpi.png[]
++
+. *Insert batteries to your Remote unit*
++
+image::insert-batteries.png[]
++
+. *Activate pairing mode on Base unit* +
+  Press and hold BOOT button on Core Module of Base unit until red LED on Core Module starts blinking.
+  BOOT button is marked on Core Module with letter "B". Pairing mode on Base unit is now active until pairing signal is received from the Remote unit.
++
+image::pairing-base.png[]
++
+. *Transmit pairing signal on Remote unit* +
+  Press and hold BOOT button on Core Module of Remote unit until red LED on Core Module lights up for two seconds.
+  BOOT button is marked on Core Module with letter "B".
+  Now pairing signal has been sent and Remote unit should stop blinking.
++
+image::pairing-remote.png[]
++
+. *Turn on the light* +
+  Shortly press BOOT button either on Base unit or Remote unit to turn on the light.
+  You can use this button any time you will want to turn the LED strip on or off.
++
+image::turn-on-light.png[]
++
+
+
+== Tweaking & Hacking
+
+Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.
+Below you can find how to change them.
+
+The limits are evaluated by Python script.
+This Python script is running on Raspberry Pi in Linux (we use Raspbian as the official Linux distribution).
+All messages between Linux components in the system are exchanged via MQTT broker.
+MQTT broker is the heart of BigClown home automation system.
+
+If you want to know more about MQTT, follow these links:
+
+* link:../academy/mqtt.html[MQTT - Messaging via Broker]
+* link:../tutorial/mosquitto.html[Mosquitto - MQTT Broker]
+
+The following messages can be observed on MQTT:
+
+* Measured temperature and humidity values reported by Remote unit
++
+ mosquitto_sub -v -t "node/remote/thermometer/i2c0-49"
++
+ mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"
+
+TODO: Insert format of both messages as reported by mosquitto_sub
+
+* Desired color of the LED strip connected to Base unit
+
+TODO: Insert format of message as reported by mosquitto_sub
+
+* Configuration of the threshold values:
+** Temperature threshold high
+** Temperature threshold low
+** Humidity threshold high
+** Humidity threshold low
+
+TODO: Insert format of all limit messages as reported by mosquitto_sub
+
+To run the system:
+
+. Connect to your Raspberry Pi via SSH (port 22) using:
+*  Windows: Use http://www.putty.org[PuTTY]
+*  Linux + macOS: Use ssh command in Terminal
+. Default username is "pi" and password "raspberry"
+. If you want to change the temperature alarm high, run this command:
+	TODO: MQTT publish command (with retain flag)
+. If you want to observe reported humidity (every 30 seconds), run this command:
+	TODO: MQTT subscribe command
