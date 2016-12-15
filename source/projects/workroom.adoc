@@ -2,7 +2,6 @@
 :imagesdir: images/workroom
 
 [no-bullet]
-
 *  
 +
 video::EFFVnbwtMNg[youtube, width=738, height=400]
@@ -79,7 +78,6 @@ You will also need:
 You can either follow the step-by-step instructions in the text below or watch this short video:
 
 [no-bullet]
-
 *  
 +
 video::Azui3VXtKJA[youtube, width=738, height=400]
@@ -137,6 +135,12 @@ image::pairing-remote.png[]
 +
 image::turn-on-light.png[]
 +
+
+You can see pairing setup and testing the functionality in this short video:
+
+*  
++
+video::3q05fJHeQrg[youtube, width=738, height=400]
 
 
 == Tweaking & Hacking
