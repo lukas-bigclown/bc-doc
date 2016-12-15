@@ -158,7 +158,6 @@ The following messages can be observed on MQTT:
 
 * Measured temperature and humidity values reported by Remote unit
 +
- mosquitto_sub -v -t "node/remote/thermometer/i2c0-49"
  nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}
 +
  nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}
