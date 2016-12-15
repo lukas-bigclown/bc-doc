@@ -1,4 +1,5 @@
 = ALPHA SET
+:page-nav-hidden:
 :imagesdir: images
 
 _Welcome to BigClown Labs’ Alpha Set Git repository!_

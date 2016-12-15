@@ -1,3 +1,1 @@
 *Welcome to BigClown Labs’ Documentation Git repository!*
-
-<<alpha/index#, Click here>> for **Alpha Set** documentation.
