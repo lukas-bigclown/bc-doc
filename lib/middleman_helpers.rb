@@ -36,7 +36,9 @@ module MiddlemanHelpers
 
   # Returns children pages of the given page sorted by nav-weight and title.
   def nested_pages(resource)
-    children = resource.children.find_all { |r| nav_title(r) }
+    children = resource.children
+      .reject { |r| r.data.key? 'nav-hidden' }
+      .find_all { |r| nav_title(r) }
     Naturally.sort_by(children) do |r|
       [r.data['nav-weight'] || 100, nav_title(r).downcase]
     end
