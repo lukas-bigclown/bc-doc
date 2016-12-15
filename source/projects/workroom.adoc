@@ -1,7 +1,12 @@
 = Workroom Project
 :imagesdir: images/workroom
 
-video::EFFVnbwtMNg[youtube, width=640, height=480]
+[no-bullet]
+
+*  
++
+video::EFFVnbwtMNg[youtube, width=738, height=400]
+
 
 
 == What is it?
@@ -12,10 +17,10 @@ If one of these values are out of proper range, project will indicate it on a pr
 
 The color codes are as following:
 
-* The color is green if the humidity is too high (> 60%)
-* The color is yellow if the humidity is too low (< 30%)
-* The color is red if the temperature is too high (> 26°C)
-* The color is blue if the temperature is too low (< 22°C)
+* The color is green if the humidity is too high (> 60%).
+* The color is yellow if the humidity is too low (< 30%).
+* The color is red if the temperature is too high (> 26°C).
+* The color is blue if the temperature is too low (< 22°C).
 
 Any of these limit values can be adjusted in configuration (later we will show you how).
 Besides this primary function the project may also serve as a pleasant lighting on your desk or can be modified for other purposes.
@@ -40,7 +45,7 @@ image::block-diagram.png[]
 
 == What will we need?
 
-All items can be purchased as a pre-installed set here. (TODO LINK)
+All items can be purchased as a https://shop.bigclown.com/products/workroom-project-collection[pre-installed set] in our e-shop.
 
 Individual components in the set are:
 
@@ -50,7 +55,7 @@ Individual components in the set are:
 * 1x Tag Module
 * 1x Power Module
 * 1x Battery Module
-* 2x Base Module
+* 1x Base Module
 * 1× LED strip RGBW (1m / 144 LEDs)
 * 1x Raspberry Pi 3
 * 1x 8 GB MicroSD card with pre-installed system
@@ -73,7 +78,11 @@ You will also need:
 
 You can either follow the step-by-step instructions in the text below or watch this short video:
 
-video::Azui3VXtKJA[youtube, width=640, height=480]
+[no-bullet]
+
+*  
++
+video::Azui3VXtKJA[youtube, width=738, height=400]
 
 You can also follow these step by step instructions:
 
