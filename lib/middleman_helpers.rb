@@ -14,6 +14,12 @@ module MiddlemanHelpers
     [GITHUB_URL, repo_slug, 'edit', branch, config[:source], source_file_path].join('/')
   end
 
+  # Returns title of the current page prefixed with the site name.
+  # This is used in HTML title.
+  def page_full_title
+    [config[:site][:name], current_page.data.title].compact.join(' - ')
+  end
+
   # Returns SVG code to use beforehand declared SVG symbol.
   def use_icon(icon_id)
     content_tag :svg, xmlns: 'http://www.w3.org/2000/svg', class: 'icon' do

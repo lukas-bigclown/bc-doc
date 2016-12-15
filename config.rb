@@ -8,6 +8,7 @@ config[:sass_assets_paths] << Foundation.scss_path
 
 # Custom config variables
 config[:site] = {
+  name: 'BigClown Labs',
   github: {
     repo_slug: 'bigclownlabs/bc-doc',
     branch: 'master'
