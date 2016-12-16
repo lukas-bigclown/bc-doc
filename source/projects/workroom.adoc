@@ -7,7 +7,6 @@
 video::EFFVnbwtMNg[youtube, width=738, height=400]
 
 
-
 == What is it?
 
 With this setup you will be able to monitor environmental conditions in your workroom.
@@ -199,7 +198,7 @@ To run the system:
  mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"
 
 . If you want to change the temperature alarm high, run this command:
-+ 
++
  mosquitto_pub -t "plugin/led-strip/config" -m '{
   "values": [
       {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
