@@ -12,6 +12,9 @@ config[:site] = {
   github: {
     repo_slug: 'bigclownlabs/bc-doc',
     branch: 'master'
+  },
+  google_tag_manager: {
+    container_id: 'GTM-N2WMQSW'
   }
 }
 

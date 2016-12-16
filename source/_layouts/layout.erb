@@ -8,9 +8,19 @@
     <title><%= page_full_title %></title>
 
     <%= stylesheet_link_tag :main %>
+
+    <% unless app.development? %>
+      <!-- Google Tag Manager -->
+      <%= gtm_analytics :script %>
+    <% end %>
   </head>
 
   <body>
+    <% unless app.development? %>
+      <!-- Google Tag Manager (noscript) -->
+      <%= gtm_analytics :noscript %>
+    <% end %>
+
     <%= partial '_layouts/header' %>
 
     <%= partial '_layouts/navbar' %>

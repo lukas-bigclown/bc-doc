@@ -1,4 +1,5 @@
 require 'naturally'
+require_relative 'core_ext'
 
 module MiddlemanHelpers
 
@@ -12,6 +13,30 @@ module MiddlemanHelpers
     branch = config[:site][:github][:branch]
 
     [GITHUB_URL, repo_slug, 'edit', branch, config[:source], source_file_path].join('/')
+  end
+
+  # Returns HTML markup for Google Tag Manager (Analytics).
+  #
+  # @param type [:script, :noscript, nil]
+  def gtm_analytics(type = :script)
+    container_id = config[:site][:google_tag_manager][:container_id]
+
+    case type
+    when :script
+      content_tag :script, <<-EOF.unindent
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','#{container_id}');
+      EOF
+    when :noscript
+      content_tag :noscript do
+        content_tag :iframe, '',
+          src: "https://www.googletagmanager.com/ns.html?id=#{container_id}",
+          height: 0, width: 0, style: 'display:none;visibility:hidden'
+      end
+    end
   end
 
   # Returns title of the current page prefixed with the site name.
