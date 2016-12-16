@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>BigClown Labs</title>
+    <title>BigClown Labs - Hardware Description</title>
 
     <link href="/stylesheets/main.css" rel="stylesheet" />
   </head>
@@ -73,6 +73,9 @@
 </ul>
 
   </li>
+  <li class="level1">
+    <a href="/hardware/" class="current">Hardware Description</a>
+  </li>
 </ul>
 
 </nav>
@@ -92,9 +95,568 @@
 
       <article class="main-content hardware hardware_index">
         <h1>
-          
+          Hardware Description
         </h1>
-        This page is empty
+        <div class="sect1">
+<h2 id="_core_module"><a class="anchor" href="#_core_module"></a>Core Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This module is a fundamental element of every BigClown node.
+Its most important components are ARM microcontroller and 868 MHz radio module.
+Core Module can be programmed using USB DFU bootloader which is stored in ROM memory of the microcontroller or it can be debugged via a standard 10-pin SWD probe.
+Combination of these features, integrated security chip, temperature sensor and accelerometer makes this an unrivaled solution for today’s connected home automation nodes.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ARM Cortex M0+ 32-bit MCU STM32L083CZ</p>
+</li>
+<li>
+<p>192 kB Flash / 20 kB RAM</p>
+</li>
+<li>
+<p>Radio module (868 MHz) based on SPIRIT1</p>
+</li>
+<li>
+<p>Security chip ATSHA204A</p>
+</li>
+<li>
+<p>Digital temperature sensor TMP112</p>
+</li>
+<li>
+<p>3-axis accelerometer LIS2DH12</p>
+</li>
+<li>
+<p>Red color LED</p>
+</li>
+<li>
+<p>Push button RESET and BOOT (BOOT is available to MCU)</p>
+</li>
+<li>
+<p>10-pin SWD connector for debugging</p>
+</li>
+<li>
+<p>Micro-USB for hostcommunication and/or power</p>
+</li>
+<li>
+<p>Integrated USB DFU bootloader (no need for pre-programmed chip)</p>
+</li>
+<li>
+<p>18x GPIO (completely free for application)</p>
+</li>
+<li>
+<p>3x UART</p>
+</li>
+<li>
+<p>2x I<sup>2</sup>C</p>
+</li>
+<li>
+<p>1x SPI</p>
+</li>
+<li>
+<p>5x ADC</p>
+</li>
+<li>
+<p>2x DAC</p>
+</li>
+<li>
+<p>Deep sleep mode: &lt; 5 µA</p>
+</li>
+<li>
+<p>Operating voltage range: 2.0 V to 3.6 V</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 33 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_base_module"><a class="anchor" href="#_base_module"></a>Base Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This module works as a mechanical stand for a  BigClown node.
+With the exception of Battery Module you can plug any other BigClown module into a standardized socket available on Base Module.
+This module can be used as a stand on a desk (four rubber feets assure stable position on a surface), mounted on a DIN rail using special plastic clips, or it can be sticked on a wall or other vertical surfaces using a double-sided tape.
+The additional feature of this module is a prototyping area for soldering your own circuits.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Practical stand for BigClown module system</p>
+</li>
+<li>
+<p>Prototyping area for soldering custom circuits</p>
+</li>
+<li>
+<p>Rubber feets (included)</p>
+</li>
+<li>
+<p>Plastic clips for a DIN rail mount (optional accessory)</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 88 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_battery_module"><a class="anchor" href="#_battery_module"></a>Battery Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Battery Module is designed as a power supply source for battery-operated nodes.
+Using a low-power buck converter provides excellent efficiency and long battery lifetime from four AAA 1.5 V Alkaline cells.
+Load disconnect circuit can bypass batteries if any other power supply source is connected in the system (e.g. AC adapter or USB cable).
+Battery voltage can be measured on one of the analog inputs of the standardized header.
+Battery Module also provides an extra 5-pin socket allowing to connect a BigClown tag (I<sup>2</sup>C peripheral in a common form factor).
+Another useful feature is a prototyping area for soldering your own circuits.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>High efficiency buck converter TPS62745</p>
+</li>
+<li>
+<p>Ultra low quiescent current: 400 nA</p>
+</li>
+<li>
+<p>Recommended battery types:</p>
+</li>
+<li>
+<p>4x AAA 1.5 V Alkaline or</p>
+</li>
+<li>
+<p>4x AAA Eneloop NiMH</p>
+</li>
+<li>
+<p>Output supply voltage 3.1 V</p>
+</li>
+<li>
+<p>Battery disconnect circuit</p>
+</li>
+<li>
+<p>Input voltage measurement using ADC input</p>
+</li>
+<li>
+<p>Prototyping soldering area for soldering custom circuits</p>
+</li>
+<li>
+<p>An extra position for BigClown tag</p>
+</li>
+<li>
+<p>Ready for NFC Module (coming in 2017)</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 88 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_breadboard_module"><a class="anchor" href="#_breadboard_module"></a>Breadboard Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Everybody loves breadboards, right?
+And Breadboard Module offers an easy way to connect any BigClown module to a breadboard.
+Narrow breakout of Breadboard Module provides more space for wiring and prototyping.
+Optimized precision pin headers from the bottom side allow smooth insertion to your breadboard and prevent its damage.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adapter between BigClown modules and breadboard</p>
+</li>
+<li>
+<p>Precision pin headers optimized for breadboard sockets</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 113.7 x 33 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bridge_module"><a class="anchor" href="#_bridge_module"></a>Bridge Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In some cases a wireless connectivity and versatility of Core Module is not necessary and Bridge Module provides an easy path to connect some of the BigClown modules and/or tags to a USB host like Raspberry Pi or any desktop/laptop computer.
+MicroUSB connector not only provides communication link but also delivers power for Bridge Module and peripherals connected to it.
+This product is based on FTDI&#8217;s chip FT260 which is a USB HID to I<sup>2</sup>C/UART converter.
+This capability makes Bridge Module an ideal tool for interfacing I<sup>2</sup>C/UART peripherals from your Linux environment.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated USB HID to I<sup>2</sup>C/UART converter FT260</p>
+</li>
+<li>
+<p>Micro-USB connector</p>
+</li>
+<li>
+<p>Two independent I<sup>2</sup>C buses provided by I<sup>2</sup>C multiplexer TCA9543</p>
+</li>
+<li>
+<p>Red color LED (driven from FT260 GPIO pin)</p>
+</li>
+<li>
+<p>Operating voltage range: 3.0 to 3.6 V or from USB host</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 33 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hardware / software compatibility:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Temperature Tag</p>
+</li>
+<li>
+<p>Humidity Tag</p>
+</li>
+<li>
+<p>Lux Meter Tag</p>
+</li>
+<li>
+<p>Barometer Tag</p>
+</li>
+<li>
+<p>Tag Module</p>
+</li>
+<li>
+<p>Relay Module</p>
+</li>
+<li>
+<p>CO2 Module</p>
+</li>
+<li>
+<p>Base Module</p>
+</li>
+<li>
+<p>Breadboard Module</p>
+</li>
+<li>
+<p>Probe Module</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_co2_module"><a class="anchor" href="#_co2_module"></a>CO2 Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Carbon dioxide (or CO<sup>2</sup>) is a colorless and odorless gas that is vital to life on Earth.
+Its nominal concentration is about 400 ppm (0.04 %).
+There are many occurrences of CO2 in nature.
+For example humans produce CO2 using their respiration system during the exhalation phase.
+High concentration of CO2 leads to acidity and various health related problems.
+This is what motivated us to develop CO2 Module.
+This module achieves ±50 ppm accuracy using a non-dispersive infrared (NDIR) sensor LP8 designed by SenseAir company from Sweden.
+Thanks to its low-power operation it can be powered from batteries for years.
+BigClown has equipped LP8 sensor with additional circuitry for efficient power management and I<sup>2</sup>C-only interfacing.
+Enhancing your environmental monitoring with CO2 Module from BigClown has never been easier.
+Last but not least feature of this module are three extra 5-pin sockets allowing to connect BigClown tags (I<sup>2</sup>C peripheral in a common form factor).</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Carbon dioxide (CO2) sensor LP8</p>
+</li>
+<li>
+<p>Non-dispersive infrared (NDIR) technology developed by SenseAir (Sweden)</p>
+</li>
+<li>
+<p>Measurement range CO2: 0 to 10 000 ppm</p>
+</li>
+<li>
+<p>Accuracy: ±50 ppm CO2 ±3 % of reading (1)</p>
+</li>
+<li>
+<p>I<sup>2</sup>C-only interface (integrated UART bridge and I/O expander)</p>
+</li>
+<li>
+<p>Constant current source for 470mF supercap</p>
+</li>
+<li>
+<p>Long battery life time</p>
+</li>
+<li>
+<p>3x position for BigClown tags</p>
+</li>
+<li>
+<p>Low power consumption:</p>
+</li>
+<li>
+<p>6 µA (six measurements per hour)</p>
+</li>
+<li>
+<p>61 µA (one measurement per minute)</p>
+</li>
+<li>
+<p>Operation voltage range: 3 V to 3.6 V</p>
+</li>
+<li>
+<p>Operating temperature range: 0 to 50 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 88 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note (1): Accuracy ±50 ppm is achieved after 24 days of operation and auto calibration process.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_power_module"><a class="anchor" href="#_power_module"></a>Power Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This module allows to connect 5 V DC wall adapter via a standard 2.1 mm power jack socket.
+With this module a BigClown node can be powered using its integrated LDO which generates 3.3 V output from a 5 V input.
+Another feature is a high-current relay (230 V AC / 16 A).
+Moreover you can directly connect (via a 3-terminal block) a programmable RGB(W) LED strip with 5V interface (voltage translation logic is implemented) which is great for driving WS2812B-compatible LEDs.
+Reliability is as important for us as it is for you.
+That&#8217;s why we have implemented smart overvoltage, undervoltage and reverse polarity protection on the power jack input to guarantee the input voltage range to always stay within the proper limits.
+Last but not least feature of this module are two extra 5-pin sockets allowing to connect a BigClown tags (I<sup>2</sup>C peripheral in a common form factor).</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>5 V DC adapter input (2.1mm jack) (1)</p>
+</li>
+<li>
+<p>Input voltage range from 4.2 V to 5.8 V</p>
+</li>
+<li>
+<p>High-current relay output (230 V AC / 16 A)</p>
+</li>
+<li>
+<p>Integrated LDO with 3.3 V output voltage</p>
+</li>
+<li>
+<p>Addressable RGB(W) LED strip output (1) (2)</p>
+</li>
+<li>
+<p>2x position for BigClown tag</p>
+</li>
+<li>
+<p>Overvoltage, undervoltage and reverse polarity protection</p>
+</li>
+<li>
+<p>Pluggable 3-pin terminal block for relay output</p>
+</li>
+<li>
+<p>Pluggable 3-pin terminal block for LED strip</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 88 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(1) Maximum allowed is 6 A
+(2) Core Module is required to drive an addressable LED strip</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_probe_module"><a class="anchor" href="#_probe_module"></a>Probe Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sometimes you need to measure signals during both hardware and software development cycle.
+And to see what&#8217;s going on, you need to quickly hook up an appropriate equipment like like oscilloscope, logic analyzer, etc.
+We have made that task simple with Probe Module.
+This module is an electro-mechanical interface between test points - the "O"-shaped hooks connected to signals on BigClown header - and your equipment&#8217;s probes.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Test points for all signals available on BigClown header</p>
+</li>
+<li>
+<p>Four plated holes (in every corner) for comfortable ground clip connection</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 88 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_relay_module"><a class="anchor" href="#_relay_module"></a>Relay Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Relay Module is suitable for switching small power appliances - e.g. LED strip, cooling fan, siren, buzzer, garage door opener, etc.
+A cool feature of this module is a latching relay (also called bistable relay).
+This feature makes this module suitable for battery-operated applications.
+What does it mean?
+For this type of relay the energy is needed only during transition state of the relay.
+Once the new state has been set it is not necessary to energize the coil anymore - it will simply "remember" (or latch) its state.
+Switching period is indicated using green LED (software defined "true state"), or using red LED (software defined "false state").
+This module is I<sup>2</sup>C-only peripheral so it does not allocate any extra signals from BigClown header.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Bistable (latching) relay for switching loads up to 60 W:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>12 V DC / 5 A</p>
+</li>
+<li>
+<p>24 V DC / 2.5 A</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Suitable for battery-operated applications</p>
+</li>
+<li>
+<p>Energy is needed only during coil transition states</p>
+</li>
+<li>
+<p>I2C-only peripheral</p>
+</li>
+<li>
+<p>Red and green LEDs indicating coil transition</p>
+</li>
+<li>
+<p>Operation voltage range: 3.0 to 3.6 V</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 33 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tag_module"><a class="anchor" href="#_tag_module"></a>Tag Module</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some BigClown modules have one or more extra 5-pin sockets allowing to connect a BigClown tag (I<sup>2</sup>C peripheral in a common form factor).
+But sometimes this is still not enough or you need to extend the I<sup>2</sup>C bus with an additional channel.
+Tag Module enables to connect up to six extra tags.
+Every tag has a unique I<sup>2</sup>C address.
+Using two independent I<sup>2</sup>C buses (I2C0 and I2C1) makes it possible to connect two tags of the same address to a single BigClown node.</p>
+</div>
+<div class="paragraph">
+<p>Features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>6 x 5-pin socket position for BigClown tag (I<sup>2</sup>C peripheral)</p>
+</li>
+<li>
+<p>3x tag connected to I2C0</p>
+</li>
+<li>
+<p>3x tag connected to I2C1</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 44 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
       </article>
 
       <footer>
