@@ -367,6 +367,32 @@ Again, use <a href="http://hub.local" class="bare">http://hub.local</a> or the I
 </div>
 </div>
 <div class="paragraph">
+<p>Turn on the LED on the bridge:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "on"}'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Turn off the LED on the bridge</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "off"}'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Flashing LED on the bridge</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "1-dot"}'
+docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "2-dot"}'
+docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "3-dot"}'</pre>
+</div>
+</div>
+<div class="paragraph">
 <p>If you want to know more about MQTT, follow these links:</p>
 </div>
 <div class="ulist">
