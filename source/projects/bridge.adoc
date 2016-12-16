@@ -123,6 +123,20 @@ Set relay to “false” state:
 
  docker exec hub mosquitto_pub -t nodes/bridge/0/relay/i2c0-3b/set -m '{"state": false}'
 
+Turn on the LED on the bridge:
+
+ docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state":"on"}'
+
+Turn off the LED on the bridge
+
+ docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state":"off"}'
+
+Flashing LED on the bridge
+
+ docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state":"1-dot"}'
+ docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state":"2-dot"}'
+ docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state":"3-dot"}'
+
 If you want to know more about MQTT, follow these links:
 
 * link:../academy/mqtt.html[MQTT - Messaging via Broker]
