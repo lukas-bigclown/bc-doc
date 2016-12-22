@@ -136,6 +136,7 @@ image::turn-on-light.png[]
 +
 You can see pairing setup and testing the functionality in this short video:
 
+[no-bullet]
 *  
 +
 video::3q05fJHeQrg[youtube, width=738, height=400]
@@ -273,7 +274,7 @@ Everybody likes different environment so the preset thresholds for temperature a
 
 * Change the rules (first matching rule is used to set color):
 +
- mosquitto_pub -t "plugin/led-strip/config" -m '{
+ mosquitto_pub -t "plugins/led-strip/config" -m '{
   "values": [
       {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
       {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
