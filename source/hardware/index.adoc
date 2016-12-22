@@ -7,7 +7,7 @@
 image:core-module.png[width=300, role="related thumb left"]
 
 This module is a fundamental element of every BigClown node.
-Its most important components are ARM microcontroller and 868 MHz radio module.
+The two most important components are ARM microcontroller and 868 MHz radio module.
 Core Module can be programmed using USB DFU bootloader which is stored in ROM memory of the microcontroller or it can be debugged via a standard 10-pin SWD probe.
 Combination of these features, integrated security chip, temperature sensor and accelerometer makes this an unrivaled solution for today’s connected home automation nodes.
 
@@ -22,7 +22,7 @@ Combination of these features, integrated security chip, temperature sensor and 
 * Red color LED
 * Push button RESET and BOOT (BOOT is available to MCU)
 * 10-pin SWD connector for debugging
-* Micro-USB for hostcommunication and/or power
+* Micro-USB for host communication and/or power
 * Integrated USB DFU bootloader (no need for pre-programmed chip)
 * 18x GPIO (completely free for application)
 * 3x UART, 2x I^2^C, 1x SPI, 5x ADC, 2x DAC
@@ -37,7 +37,7 @@ Combination of these features, integrated security chip, temperature sensor and 
 
 image:base-module.png[width=300, role="related thumb left"]
 
-This module works as a mechanical stand for a  BigClown node.
+This module works as a mechanical stand for a BigClown node.
 With the exception of Battery Module you can plug any other BigClown module into a standardized socket available on Base Module.
 This module can be used as a stand on a desk (four rubber feets assure stable position on a surface), mounted on a DIN rail using special plastic clips, or it can be sticked on a wall or other vertical surfaces using a double-sided tape.
 The additional feature of this module is a prototyping area for soldering your own circuits.
@@ -69,13 +69,13 @@ Another useful feature is a prototyping area for soldering your own circuits.
 * High efficiency buck converter TPS62745
 * Ultra low quiescent current: 400 nA
 * Recommended battery types:
-* 4x AAA 1.5 V Alkaline or
-* 4x AAA Eneloop NiMH
+** 4x AAA 1.5 V Alkaline or
+** 4x AAA Eneloop NiMH
 * Output supply voltage 3.1 V
 * Battery disconnect circuit
-* Input voltage measurement using ADC input
+* Input voltage measurement using an ADC input
 * Prototyping soldering area for soldering custom circuits
-* An extra position for BigClown tag
+* One extra position for BigClown tag
 * Ready for NFC Module (coming in 2017)
 * Operating temperature range: -20 to 70 °C
 * Mechanical dimensions: 88 x 55 mm
@@ -86,8 +86,7 @@ Another useful feature is a prototyping area for soldering your own circuits.
 
 image:breadboard-module.png[width=300, role="related thumb left"]
 
-Everybody loves breadboards, right?
-And Breadboard Module offers an easy way to connect any BigClown module to a breadboard.
+Breadboard Module offers an easy way to connect any BigClown module to a breadboard.
 Narrow breakout of Breadboard Module provides more space for wiring and prototyping.
 Optimized precision pin headers from the bottom side allow smooth insertion to your breadboard and prevent its damage.
 
@@ -240,7 +239,7 @@ This module is I^2^C-only peripheral so it does not allocate any extra signals f
 ** 24 V DC / 2.5 A
 * Suitable for battery-operated applications
 * Energy is needed only during coil transition states
-* I2C-only peripheral
+* I^2^C-only peripheral
 * Red and green LEDs indicating coil transition
 * Operation voltage range: 3.0 to 3.6 V
 * Operating temperature range: -20 to 70 °C
@@ -260,9 +259,126 @@ Using two independent I^2^C buses (I2C0 and I2C1) makes it possible to connect t
 
 *Features*
 
-* 6 x 5-pin socket position for BigClown tag (I^2^C peripheral)
-* 3x tag connected to I2C0
-* 3x tag connected to I2C1
+* 6x 5-pin socket position for BigClown tag (I^2^C peripheral)
+* 3x tag positions are connected to I2C0 (right side)
+* 3x tag positions are connected to I2C1 (left side)
 * Operating temperature range: -20 to 70 °C
 * Mechanical dimensions: 44 x 55 mm
+* 10-year warranty
+
+
+== Barometer Tag
+
+Barometer Tag allows to measure absolute pressure in the range from 20 kPa to 110 kPa, or altitude above the sea level in meters.
+It uses a low-power sensor MPL3115A2 with absolute accuracy of ±0.4 kPa.
+Monitoring of absolute pressure is useful for weather forecast and it is also important parameter in biometeorology because the absolute pressure can affect our health.
+This sensor is a digital I^2^C-only peripheral featuring a very low active and standby current.
+
+*Features*
+
+* Absolute pressure sensor MPL3115A2
+* I^2^C-only peripheral
+* Pressure range from 20 kPa to 110 kPa
+* Altitude range from –698 to 11,775 m
+* Absolute accuracy: ±0.4 kPa
+* Optional interrupt output
+* Power consumption:
+** 40 µA average current (1 Hz sample rate)
+** 2 µA standby current
+* Operation voltage range: 2.0 V to 3.6 V
+* Operating temperature range: -40 to 85 °C
+* Mechanical dimensions: 16 x 16 mm
+* 10-year warranty
+
+
+== Humidity Tag
+
+Relative humidity is another essential property of the environment we live in.
+The recommended indoor range is between 30 % and 60 %.
+Values below this range (dry air) can lead to various health issues.
+On the other hand values above this range may result in troubles with having moisture.
+Humidity Tag uses humidity sensor HDC2080 offering ±2 % accuracy of relative humidity and a very low power consumption making it suitable for battery-powered applications.
+
+*Features*
+
+* Integrated humidity sensor HDC2080
+* I^2^C-only peripheral
+* Relative humidity range from 0 % to 100 %
+* Humidity accuracy ±2 %
+* Optional interrupt output
+* Operating current: 10 µA
+* Operating voltage range: 1.8 V to 3.3 V
+* Operating temperature range: -40 to 125 °C
+* Mechanical dimensions: 16 x 16 mm
+* 10-year warranty
+
+
+== Lux Meter Tag
+
+This tag uses ambient light sensor OPT3001 which measures the intensity of visible light.
+It measures values in the range from 0.01 to 83k lux with a 23-bit dynamic range.
+The spectral response of the sensor tightly matches the photopic response of the human eye and includes significant infrared rejection.
+This sensor is a digital I^2^C-only peripheral featuring a very low active and shutdown current.
+
+*Features*
+
+* Integrated ambient light sensor OPT3001
+* I^2^C-only peripheral
+* Digital ambient light sensor OPT3001
+* Measures in the range from 0.01 to 83k lux
+* 23-bit effective dynamic range
+* Optional interrupt output
+* Power consumption:
+** Active current: 1.8 µA
+** Shutdown current: 0.3 µA
+* Operating voltage range: 1.6 V to 3.6 V
+* Operating temperature range: -20 to 70 °C
+* Mechanical dimensions: 16 x 16 mm
+* 10-year warranty
+
+
+== NFC Tag
+
+NFC (or Near Field Communication) is a great technology for transferring data on a short distance (couple of centimeters).
+This attribute makes this technology appealing for security key provisioning.
+Many smartphones are today equipped with NFC technology.
+NFC Tag builds on NXP's chip NT3H2111 and operates as a dual-port memory - NFC from one side and I^2^C from the other side.
+It features a 1 kB EEPROM memory.
+The chip does not have to be powered when being accessed from the NFC side.
+
+*Features*
+
+* Integrated NFC tag NT3H2111
+* I^2^C-only peripheral
+* 1 kB EEPROM memory
+* Optional interrupt output
+* Optional energy harvesting output
+* Operating current: 240 µA
+* Operating voltage range: 1.7 V to 3.6 V
+* Operating temperature range: -20 to 70 °C
+* Mechanical dimensions: 16 x 16 mm
+* 10-year warranty
+
+
+== Temperature Tag
+
+Temperature is the most commonly monitored environmental property both indoor and outdoor.
+Temperature Tag uses a high-accuracy temperature sensor TMP112 with typical accuracy of ±0.1 °C at 25 °C.
+This sensor is a digital and calibrated I^2^C-only peripheral featuring a very low active and shutdown current.
+
+*Features*
+
+* Integrated temperature sensor TMP112
+* I^2^C-only peripheral
+* Temperature accuracy:
+** ±0.5 °C (max) in the range from 0 °C to 65 °C
+** ±1.0 °C (max) in the range from -40 °C to 125 °C
+* 12-bit resolution (0.0625 °C)
+* Optional interrupt output
+* Power consumption:
+** 7 µA active current (4 Hz samples rate)
+** 0.5 µA shutdown current
+* Operating voltage range: 1.4 V to 3.6 V
+* Operating temperature range: -40 to 125 °C
+* Mechanical dimensions: 16 x 16 mm
 * 10-year warranty
