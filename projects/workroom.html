@@ -382,8 +382,11 @@ You can use this button any time you will want to turn the LED strip on or off.<
 <div class="paragraph">
 <p>You can see pairing setup and testing the functionality in this short video:</p>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+<div class="ulist no-bullet">
+<ul class="no-bullet">
 <li>
 <p></p>
 <div class="videoblock">
@@ -393,9 +396,6 @@ You can use this button any time you will want to turn the LED strip on or off.<
 </div>
 </li>
 </ul>
-</div>
-</li>
-</ol>
 </div>
 </div>
 </div>
@@ -705,7 +705,7 @@ nodes/base/led-strip/- {"state": true}</pre>
 <p>Change the rules (first matching rule is used to set color):</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugin/led-strip/config" -m '{
+<pre>mosquitto_pub -t "plugins/led-strip/config" -m '{
  "values": [
      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
