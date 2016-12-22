@@ -156,18 +156,27 @@ How-to communicate with MQTT broker:
 . Connect to your Raspberry Pi via SSH (port 22) using:
 *  Windows: Use http://www.putty.org[PuTTY]
 *  Linux + macOS: Use ssh command in Terminal
+
 . Default username is "pi" and password "raspberry"
+
 . Show measurements from remote (reported every 30 seconds):
 +
  mosquitto_sub -v -t "nodes/remote/#"
+
 TIP: Use Ctrl-C to stop measurements monitoring.
+
+[start=4]
 . Use LED strip as light and set luminosity:
 + 
  mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
+
 . Update and retain LED strip brightness:
 +
  mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}' -r
-IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
+
+IMPORTANT: Notice *-r* to store topic in MQTT broker as persistent configuration
+
+[start=6]
 . Use LED strip as humidity and temperature indicator:
 + 
  mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "rules"}'
@@ -178,22 +187,25 @@ IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
 * Measured temperature and humidity values reported by Remote unit
 +
  nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}
-+
  nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}
 
 
 === Relay on base
 
 * Relay has state true (switched on) or false (switched off)
- . nodes/base/relay/- {"state": true}
++
+ nodes/base/relay/- {"state": true}
 
 ==== Examples
+
 * Switch Relay ON
 +
  mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}' 
+
 * Switch Relay OFF
 +
  mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}' 
+
 * Request Relay state
 +
  mosquitto_sub -v -t "nodes/base/relay/-" &
@@ -205,6 +217,7 @@ IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
 * Desired color of the LED strip connected to Base unit
 +
   nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}
+
 * LED strip configuration
 +
  nodes/base/led-strip/-/config/set {"mode": "rgb", "count": 150}
@@ -219,9 +232,11 @@ Plugin serves also as comfort driver for LED strip.
 * Generate data for all pixels through color attribute:
 +
  plugins/led-strip/data/set" {"color": [255,0,0,0]}
+
 * Use data/set color attribute to generate pixels:
 +
  plugins/led-strip/data/set" {"state": "color"}
+
 * Use rules matching to generate pixels:
 +
  plugins/led-strip/data/set" {"state": "rules"}
@@ -230,16 +245,21 @@ Plugin serves also as comfort driver for LED strip.
 * Use LED strip as light
 +
  mosquitto_pub -t "plugins/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'
-. Change LED strip brightness:
+
+* Change LED strip brightness:
 +
  mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}'
+
 * Switch LED strip OFF
 +
  mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": false}' 
+
 * Switch LED strip ON
 +
  mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": true}' 
+
 NOTE: Pixels are preserved.
+
 * Request LED strip state
 +
  mosquitto_sub -v -t "nodes/base/led-strip/-" &
@@ -251,7 +271,7 @@ NOTE: Pixels are preserved.
 
 Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.
 
-. Change the rules (first matching rule is used to set color):
+* Change the rules (first matching rule is used to set color):
 +
  mosquitto_pub -t "plugin/led-strip/config" -m '{
   "values": [
