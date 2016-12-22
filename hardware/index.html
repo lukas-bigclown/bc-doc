@@ -116,7 +116,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="paragraph">
 <p>This module is a fundamental element of every BigClown node.
-Its most important components are ARM microcontroller and 868 MHz radio module.
+The two most important components are ARM microcontroller and 868 MHz radio module.
 Core Module can be programmed using USB DFU bootloader which is stored in ROM memory of the microcontroller or it can be debugged via a standard 10-pin SWD probe.
 Combination of these features, integrated security chip, temperature sensor and accelerometer makes this an unrivaled solution for today’s connected home automation nodes.</p>
 </div>
@@ -153,7 +153,7 @@ Combination of these features, integrated security chip, temperature sensor and 
 <p>10-pin SWD connector for debugging</p>
 </li>
 <li>
-<p>Micro-USB for hostcommunication and/or power</p>
+<p>Micro-USB for host communication and/or power</p>
 </li>
 <li>
 <p>Integrated USB DFU bootloader (no need for pre-programmed chip)</p>
@@ -190,7 +190,7 @@ Combination of these features, integrated security chip, temperature sensor and 
 <p><span class="image related thumb left"><img src="images/base-module.png" alt="base module" width="300"></span></p>
 </div>
 <div class="paragraph">
-<p>This module works as a mechanical stand for a  BigClown node.
+<p>This module works as a mechanical stand for a BigClown node.
 With the exception of Battery Module you can plug any other BigClown module into a standardized socket available on Base Module.
 This module can be used as a stand on a desk (four rubber feets assure stable position on a surface), mounted on a DIN rail using special plastic clips, or it can be sticked on a wall or other vertical surfaces using a double-sided tape.
 The additional feature of this module is a prototyping area for soldering your own circuits.</p>
@@ -252,12 +252,16 @@ Another useful feature is a prototyping area for soldering your own circuits.</p
 </li>
 <li>
 <p>Recommended battery types:</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>4x AAA 1.5 V Alkaline or</p>
 </li>
 <li>
 <p>4x AAA Eneloop NiMH</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>Output supply voltage 3.1 V</p>
@@ -266,13 +270,13 @@ Another useful feature is a prototyping area for soldering your own circuits.</p
 <p>Battery disconnect circuit</p>
 </li>
 <li>
-<p>Input voltage measurement using ADC input</p>
+<p>Input voltage measurement using an ADC input</p>
 </li>
 <li>
 <p>Prototyping soldering area for soldering custom circuits</p>
 </li>
 <li>
-<p>An extra position for BigClown tag</p>
+<p>One extra position for BigClown tag</p>
 </li>
 <li>
 <p>Ready for NFC Module (coming in 2017)</p>
@@ -297,8 +301,7 @@ Another useful feature is a prototyping area for soldering your own circuits.</p
 <p><span class="image related thumb left"><img src="images/breadboard-module.png" alt="breadboard module" width="300"></span></p>
 </div>
 <div class="paragraph">
-<p>Everybody loves breadboards, right?
-And Breadboard Module offers an easy way to connect any BigClown module to a breadboard.
+<p>Breadboard Module offers an easy way to connect any BigClown module to a breadboard.
 Narrow breakout of Breadboard Module provides more space for wiring and prototyping.
 Optimized precision pin headers from the bottom side allow smooth insertion to your breadboard and prevent its damage.</p>
 </div>
@@ -625,7 +628,7 @@ This module is I<sup>2</sup>C-only peripheral so it does not allocate any extra 
 <p>Energy is needed only during coil transition states</p>
 </li>
 <li>
-<p>I2C-only peripheral</p>
+<p>I<sup>2</sup>C-only peripheral</p>
 </li>
 <li>
 <p>Red and green LEDs indicating coil transition</p>
@@ -665,19 +668,307 @@ Using two independent I<sup>2</sup>C buses (I2C0 and I2C1) makes it possible to 
 <div class="ulist">
 <ul>
 <li>
-<p>6 x 5-pin socket position for BigClown tag (I<sup>2</sup>C peripheral)</p>
+<p>6x 5-pin socket position for BigClown tag (I<sup>2</sup>C peripheral)</p>
 </li>
 <li>
-<p>3x tag connected to I2C0</p>
+<p>3x tag positions are connected to I2C0 (right side)</p>
 </li>
 <li>
-<p>3x tag connected to I2C1</p>
+<p>3x tag positions are connected to I2C1 (left side)</p>
 </li>
 <li>
 <p>Operating temperature range: -20 to 70 °C</p>
 </li>
 <li>
 <p>Mechanical dimensions: 44 x 55 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_barometer_tag"><a class="anchor" href="#_barometer_tag"></a>Barometer Tag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Barometer Tag allows to measure absolute pressure in the range from 20 kPa to 110 kPa, or altitude above the sea level in meters.
+It uses a low-power sensor MPL3115A2 with absolute accuracy of ±0.4 kPa.
+Monitoring of absolute pressure is useful for weather forecast and it is also important parameter in biometeorology because the absolute pressure can affect our health.
+This sensor is a digital I<sup>2</sup>C-only peripheral featuring a very low active and standby current.</p>
+</div>
+<div class="paragraph">
+<p><strong>Features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Absolute pressure sensor MPL3115A2</p>
+</li>
+<li>
+<p>I<sup>2</sup>C-only peripheral</p>
+</li>
+<li>
+<p>Pressure range from 20 kPa to 110 kPa</p>
+</li>
+<li>
+<p>Altitude range from –698 to 11,775 m</p>
+</li>
+<li>
+<p>Absolute accuracy: ±0.4 kPa</p>
+</li>
+<li>
+<p>Optional interrupt output</p>
+</li>
+<li>
+<p>Power consumption:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>40 µA average current (1 Hz sample rate)</p>
+</li>
+<li>
+<p>2 µA standby current</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Operation voltage range: 2.0 V to 3.6 V</p>
+</li>
+<li>
+<p>Operating temperature range: -40 to 85 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 16 x 16 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_humidity_tag"><a class="anchor" href="#_humidity_tag"></a>Humidity Tag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Relative humidity is another essential property of the environment we live in.
+The recommended indoor range is between 30 % and 60 %.
+Values below this range (dry air) can lead to various health issues.
+On the other hand values above this range may result in troubles with having moisture.
+Humidity Tag uses humidity sensor HDC2080 offering ±2 % accuracy of relative humidity and a very low power consumption making it suitable for battery-powered applications.</p>
+</div>
+<div class="paragraph">
+<p><strong>Features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated humidity sensor HDC2080</p>
+</li>
+<li>
+<p>I<sup>2</sup>C-only peripheral</p>
+</li>
+<li>
+<p>Relative humidity range from 0 % to 100 %</p>
+</li>
+<li>
+<p>Humidity accuracy ±2 %</p>
+</li>
+<li>
+<p>Optional interrupt output</p>
+</li>
+<li>
+<p>Operating current: 10 µA</p>
+</li>
+<li>
+<p>Operating voltage range: 1.8 V to 3.3 V</p>
+</li>
+<li>
+<p>Operating temperature range: -40 to 125 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 16 x 16 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lux_meter_tag"><a class="anchor" href="#_lux_meter_tag"></a>Lux Meter Tag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This tag uses ambient light sensor OPT3001 which measures the intensity of visible light.
+It measures values in the range from 0.01 to 83k lux with a 23-bit dynamic range.
+The spectral response of the sensor tightly matches the photopic response of the human eye and includes significant infrared rejection.
+This sensor is a digital I<sup>2</sup>C-only peripheral featuring a very low active and shutdown current.</p>
+</div>
+<div class="paragraph">
+<p><strong>Features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated ambient light sensor OPT3001</p>
+</li>
+<li>
+<p>I<sup>2</sup>C-only peripheral</p>
+</li>
+<li>
+<p>Digital ambient light sensor OPT3001</p>
+</li>
+<li>
+<p>Measures in the range from 0.01 to 83k lux</p>
+</li>
+<li>
+<p>23-bit effective dynamic range</p>
+</li>
+<li>
+<p>Optional interrupt output</p>
+</li>
+<li>
+<p>Power consumption:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Active current: 1.8 µA</p>
+</li>
+<li>
+<p>Shutdown current: 0.3 µA</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Operating voltage range: 1.6 V to 3.6 V</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 16 x 16 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nfc_tag"><a class="anchor" href="#_nfc_tag"></a>NFC Tag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NFC (or Near Field Communication) is a great technology for transferring data on a short distance (couple of centimeters).
+This attribute makes this technology appealing for security key provisioning.
+Many smartphones are today equipped with NFC technology.
+NFC Tag builds on NXP&#8217;s chip NT3H2111 and operates as a dual-port memory - NFC from one side and I<sup>2</sup>C from the other side.
+It features a 1 kB EEPROM memory.
+The chip does not have to be powered when being accessed from the NFC side.</p>
+</div>
+<div class="paragraph">
+<p><strong>Features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated NFC tag NT3H2111</p>
+</li>
+<li>
+<p>I<sup>2</sup>C-only peripheral</p>
+</li>
+<li>
+<p>1 kB EEPROM memory</p>
+</li>
+<li>
+<p>Optional interrupt output</p>
+</li>
+<li>
+<p>Optional energy harvesting output</p>
+</li>
+<li>
+<p>Operating current: 240 µA</p>
+</li>
+<li>
+<p>Operating voltage range: 1.7 V to 3.6 V</p>
+</li>
+<li>
+<p>Operating temperature range: -20 to 70 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 16 x 16 mm</p>
+</li>
+<li>
+<p>10-year warranty</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_temperature_tag"><a class="anchor" href="#_temperature_tag"></a>Temperature Tag</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Temperature is the most commonly monitored environmental property both indoor and outdoor.
+Temperature Tag uses a high-accuracy temperature sensor TMP112 with typical accuracy of ±0.1 °C at 25 °C.
+This sensor is a digital and calibrated I<sup>2</sup>C-only peripheral featuring a very low active and shutdown current.</p>
+</div>
+<div class="paragraph">
+<p><strong>Features</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated temperature sensor TMP112</p>
+</li>
+<li>
+<p>I<sup>2</sup>C-only peripheral</p>
+</li>
+<li>
+<p>Temperature accuracy:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>±0.5 °C (max) in the range from 0 °C to 65 °C</p>
+</li>
+<li>
+<p>±1.0 °C (max) in the range from -40 °C to 125 °C</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>12-bit resolution (0.0625 °C)</p>
+</li>
+<li>
+<p>Optional interrupt output</p>
+</li>
+<li>
+<p>Power consumption:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>7 µA active current (4 Hz samples rate)</p>
+</li>
+<li>
+<p>0.5 µA shutdown current</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Operating voltage range: 1.4 V to 3.6 V</p>
+</li>
+<li>
+<p>Operating temperature range: -40 to 125 °C</p>
+</li>
+<li>
+<p>Mechanical dimensions: 16 x 16 mm</p>
 </li>
 <li>
 <p>10-year warranty</p>
