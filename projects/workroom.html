@@ -400,20 +400,14 @@ You can use this button any time you will want to turn the LED strip on or off.<
 </div>
 </div>
 <div class="sect1">
-<h2 id="_tweaking_hacking"><a class="anchor" href="#_tweaking_hacking"></a>Tweaking &amp; Hacking</h2>
+<h2 id="_mqtt_data_playground"><a class="anchor" href="#_mqtt_data_playground"></a>MQTT data playground</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.
-Below you can find how to change them.</p>
-</div>
-<div class="paragraph">
-<p>The limits are evaluated by Python script.
-This Python script is running on Raspberry Pi in Linux (we use Raspbian as the official Linux distribution).
-All messages between Linux components in the system are exchanged via MQTT broker.
+<p>All messages between Linux components in the system are exchanged via MQTT broker.
 MQTT broker is the heart of BigClown home automation system.</p>
 </div>
 <div class="paragraph">
-<p>If you want to know more about MQTT, follow these links:</p>
+<p>You can find more about MQTT here:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -426,52 +420,7 @@ MQTT broker is the heart of BigClown home automation system.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following messages can be observed on MQTT:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Measured temperature and humidity values reported by Remote unit</p>
-<div class="literalblock">
-<div class="content">
-<pre>nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Desired color of the LED strip connected to Base unit</p>
-<div class="literalblock">
-<div class="content">
-<pre>nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Configuration of the threshold values:</p>
-<div class="literalblock">
-<div class="content">
-<pre> plugin/led-strip/config {
-  "values": [
-      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
-      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
-      {"temperature": {"from": 26}, "color": [255, 0, 0, 0]},
-      {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
-      {"color": [0, 0, 0, 255]},
-  ],
-  "brightness":255
-}</pre>
-</div>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>To run the system:</p>
+<p>How-to communicate with MQTT broker:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -492,39 +441,241 @@ MQTT broker is the heart of BigClown home automation system.</p>
 <p>Default username is "pi" and password "raspberry"</p>
 </li>
 <li>
-<p>If you want to change the brightness, run this command:</p>
+<p>Show measurements from remote (reported every 30 seconds):</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugin/led-strip/config/set" -m '{"brightness": 255}'</pre>
+<pre> mosquitto_sub -v -t "nodes/remote/#"
+TIP: Use Ctrl-C to stop measurements monitoring.
+. Use LED strip as light and set luminosity:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
+. Update and retain LED strip brightness:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}' -r
+IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
+. Use LED strip as humidity and temperature indicator:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "rules"}'</pre>
 </div>
 </div>
 </li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_sensors_on_remote"><a class="anchor" href="#_sensors_on_remote"></a>Sensors on remote</h3>
+<div class="ulist">
+<ul>
 <li>
-<p>If you want to observe reported humidity (every 30 seconds), run this command:</p>
+<p>Measured temperature and humidity values reported by Remote unit</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_sub -v -t "node/remote/humidity-sensor/i2c0-40"</pre>
+<pre>nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}</pre>
 </div>
 </div>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_relay_on_base"><a class="anchor" href="#_relay_on_base"></a>Relay on base</h3>
+<div class="ulist">
+<ul>
 <li>
-<p>If you want to change the temperature alarm high, run this command:</p>
+<p>Relay has state true (switched on) or false (switched off)</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>nodes/base/relay/- {"state": true}</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Switch Relay ON</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "plugin/led-strip/config" -m '{
-  "values": [
-      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
-      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
-      {"temperature": {"from":30}, "color": [255, 0, 0, 0]},
-      {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
-      {"color": [0, 0, 0, 255]},
-  ],
-  "brightness":255
+<pre> mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
+* Switch Relay OFF</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
+* Request Relay state</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_sub -v -t "nodes/base/relay/-" &amp;
+mosquitto_pub -t "nodes/base/relay/-/get" -m '{}'</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_led_strip_on_base"><a class="anchor" href="#_led_strip_on_base"></a>LED strip on base</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Desired color of the LED strip connected to Base unit</p>
+<div class="literalblock">
+<div class="content">
+<pre>  nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}
+* LED strip configuration</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>nodes/base/led-strip/-/config/set {"mode": "rgb", "count": 150}
+nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plugin_led_strip"><a class="anchor" href="#_plugin_led_strip"></a>Plugin led-strip</h3>
+<div class="paragraph">
+<p>Temperature and humididy limits are evaluated by Python script running on Raspberry Pi in Linux (we use Raspbian as the official Linux distribution).</p>
+</div>
+<div class="paragraph">
+<p>Plugin serves also as comfort driver for LED strip.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generate data for all pixels through color attribute:</p>
+<div class="literalblock">
+<div class="content">
+<pre> plugins/led-strip/data/set" {"color": [255,0,0,0]}
+* Use data/set color attribute to generate pixels:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> plugins/led-strip/data/set" {"state": "color"}
+* Use rules matching to generate pixels:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>plugins/led-strip/data/set" {"state": "rules"}</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_examples_2"><a class="anchor" href="#_examples_2"></a>Examples</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Use LED strip as light</p>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "plugins/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'
+. Change LED strip brightness:</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}'
+* Switch LED strip OFF</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": false}'
+* Switch LED strip ON</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": true}'
+NOTE: Pixels are preserved.
+* Request LED strip state</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_sub -v -t "nodes/base/led-strip/-" &amp;
+mosquitto_pub -t "nodes/base/led-strip/-/get" -m '{}'
+nodes/base/led-strip/- {"state": true}</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_change_default_thresholds"><a class="anchor" href="#_change_default_thresholds"></a>Change default thresholds</h4>
+<div class="paragraph">
+<p>Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change the rules (first matching rule is used to set color):</p>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_pub -t "plugin/led-strip/config" -m '{
+ "values": [
+     {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
+     {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
+     {"temperature": {"from":30}, "color": [255, 0, 0, 0]},
+     {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
+     {"color": [0, 0, 0, 255]},
+ ],
+ "brightness":255
 }'</pre>
 </div>
 </div>
 </li>
 </ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_plugin_blynk"><a class="anchor" href="#_plugin_blynk"></a>Plugin blynk</h3>
+<div class="paragraph">
+<p>JavaScript integration plugin with <a href="http://www.blynk.cc/">Blynk</a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configure Blynk token for virtual HW</p>
+<div class="literalblock">
+<div class="content">
+<pre>mosquitto_pub -t "plugins/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
