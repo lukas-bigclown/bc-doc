@@ -444,24 +444,60 @@ MQTT broker is the heart of BigClown home automation system.</p>
 <p>Show measurements from remote (reported every 30 seconds):</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_sub -v -t "nodes/remote/#"
-TIP: Use Ctrl-C to stop measurements monitoring.
-. Use LED strip as light and set luminosity:</pre>
+<pre>mosquitto_sub -v -t "nodes/remote/#"</pre>
 </div>
 </div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+Use Ctrl-C to stop measurements monitoring.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>Use LED strip as light and set luminosity:</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
-. Update and retain LED strip brightness:</pre>
+<pre>mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Update and retain LED strip brightness:</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}' -r
-IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
-. Use LED strip as humidity and temperature indicator:</pre>
+<pre>mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}' -r</pre>
 </div>
 </div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+Notice <strong>-r</strong> to store topic in MQTT broker as persistent configuration
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="6">
+<li>
+<p>Use LED strip as humidity and temperature indicator:</p>
 <div class="literalblock">
 <div class="content">
 <pre>mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "rules"}'</pre>
@@ -478,12 +514,8 @@ IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
 <p>Measured temperature and humidity values reported by Remote unit</p>
 <div class="literalblock">
 <div class="content">
-<pre>nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}</pre>
+<pre>nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}
+nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}</pre>
 </div>
 </div>
 </li>
@@ -496,12 +528,10 @@ IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
 <ul>
 <li>
 <p>Relay has state true (switched on) or false (switched off)</p>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>nodes/base/relay/- {"state": true}</p>
-</li>
-</ol>
+<div class="literalblock">
+<div class="content">
+<pre>nodes/base/relay/- {"state": true}</pre>
+</div>
 </div>
 </li>
 </ul>
@@ -514,16 +544,20 @@ IMPORTANT: Notice -r to store topic in MQTT broker as persistent configuration
 <p>Switch Relay ON</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
-* Switch Relay OFF</pre>
+<pre>mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Switch Relay OFF</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
-* Request Relay state</pre>
+<pre>mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Request Relay state</p>
 <div class="literalblock">
 <div class="content">
 <pre>mosquitto_sub -v -t "nodes/base/relay/-" &amp;
@@ -543,10 +577,12 @@ mosquitto_pub -t "nodes/base/relay/-/get" -m '{}'</pre>
 <p>Desired color of the LED strip connected to Base unit</p>
 <div class="literalblock">
 <div class="content">
-<pre>  nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}
-* LED strip configuration</pre>
+<pre>nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}</pre>
 </div>
 </div>
+</li>
+<li>
+<p>LED strip configuration</p>
 <div class="literalblock">
 <div class="content">
 <pre>nodes/base/led-strip/-/config/set {"mode": "rgb", "count": 150}
@@ -571,16 +607,20 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Generate data for all pixels through color attribute:</p>
 <div class="literalblock">
 <div class="content">
-<pre> plugins/led-strip/data/set" {"color": [255,0,0,0]}
-* Use data/set color attribute to generate pixels:</pre>
+<pre>plugins/led-strip/data/set" {"color": [255,0,0,0]}</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Use data/set color attribute to generate pixels:</p>
 <div class="literalblock">
 <div class="content">
-<pre> plugins/led-strip/data/set" {"state": "color"}
-* Use rules matching to generate pixels:</pre>
+<pre>plugins/led-strip/data/set" {"state": "color"}</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Use rules matching to generate pixels:</p>
 <div class="literalblock">
 <div class="content">
 <pre>plugins/led-strip/data/set" {"state": "rules"}</pre>
@@ -597,29 +637,52 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Use LED strip as light</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "plugins/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'
-. Change LED strip brightness:</pre>
+<pre>mosquitto_pub -t "plugins/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Change LED strip brightness:</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}'
-* Switch LED strip OFF</pre>
+<pre>mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}'</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Switch LED strip OFF</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": false}'
-* Switch LED strip ON</pre>
+<pre>mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": false}'</pre>
 </div>
 </div>
+</li>
+<li>
+<p>Switch LED strip ON</p>
 <div class="literalblock">
 <div class="content">
-<pre> mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": true}'
-NOTE: Pixels are preserved.
-* Request LED strip state</pre>
+<pre>mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": true}'</pre>
 </div>
 </div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Pixels are preserved.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Request LED strip state</p>
 <div class="literalblock">
 <div class="content">
 <pre>mosquitto_sub -v -t "nodes/base/led-strip/-" &amp;
@@ -636,8 +699,8 @@ nodes/base/led-strip/- {"state": true}</pre>
 <div class="paragraph">
 <p>Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Change the rules (first matching rule is used to set color):</p>
 <div class="literalblock">
@@ -655,7 +718,7 @@ nodes/base/led-strip/- {"state": true}</pre>
 </div>
 </div>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>
