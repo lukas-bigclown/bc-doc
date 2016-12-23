@@ -471,7 +471,7 @@ Use Ctrl-C to stop measurements monitoring.
 <p>Use LED strip as light and set luminosity:</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'</pre>
 </div>
 </div>
 </li>
@@ -479,7 +479,7 @@ Use Ctrl-C to stop measurements monitoring.
 <p>Update and retain LED strip brightness:</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}' -r</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}' -r</pre>
 </div>
 </div>
 </li>
@@ -503,7 +503,7 @@ Notice <strong>-r</strong> to store topic in MQTT broker as persistent configura
 <p>Use LED strip as humidity and temperature indicator:</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "rules"}'</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'</pre>
 </div>
 </div>
 </li>
@@ -610,7 +610,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Generate data for all pixels through color attribute:</p>
 <div class="literalblock">
 <div class="content">
-<pre>plugins/led-strip/data/set" {"color": [255,0,0,0]}</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"color": [255,0,0,0]}'</pre>
 </div>
 </div>
 </li>
@@ -618,7 +618,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Use data/set color attribute to generate pixels:</p>
 <div class="literalblock">
 <div class="content">
-<pre>plugins/led-strip/data/set" {"state": "color"}</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color"}'</pre>
 </div>
 </div>
 </li>
@@ -626,7 +626,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Use rules matching to generate pixels:</p>
 <div class="literalblock">
 <div class="content">
-<pre>plugins/led-strip/data/set" {"state": "rules"}</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'</pre>
 </div>
 </div>
 </li>
@@ -640,7 +640,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Use LED strip as light</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugins/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'</pre>
 </div>
 </div>
 </li>
@@ -648,7 +648,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Change LED strip brightness:</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}'</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}'</pre>
 </div>
 </div>
 </li>
@@ -656,7 +656,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Switch LED strip OFF</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": false}'</pre>
+<pre>mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'</pre>
 </div>
 </div>
 </li>
@@ -664,7 +664,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Switch LED strip ON</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": true}'</pre>
+<pre>mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'</pre>
 </div>
 </div>
 </li>
@@ -688,9 +688,9 @@ Pixels are preserved.
 <p>Request LED strip state</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_sub -v -t "nodes/base/led-strip/-" &amp;
-mosquitto_pub -t "nodes/base/led-strip/-/get" -m '{}'
-nodes/base/led-strip/- {"state": true}</pre>
+<pre>mosquitto_sub -v -t "nodes/base/light/-" &amp;
+mosquitto_pub -t "nodes/base/light/-/get" -m '{}'
+nodes/base/light/- {"state": true}</pre>
 </div>
 </div>
 </li>
@@ -708,16 +708,15 @@ nodes/base/led-strip/- {"state": true}</pre>
 <p>Change the rules (first matching rule is used to set color):</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugins/led-strip/config" -m '{
- "values": [
+<pre>mosquitto_pub -t "plugin/led-strip/config" -m '{
+ "rules": [
      {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
      {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
      {"temperature": {"from":30}, "color": [255, 0, 0, 0]},
      {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
      {"color": [0, 0, 0, 255]},
- ],
- "brightness":255
-}'</pre>
+ ]
+}' -r</pre>
 </div>
 </div>
 </li>
@@ -736,7 +735,7 @@ nodes/base/led-strip/- {"state": true}</pre>
 <p>Configure Blynk token for virtual HW</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugins/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r</pre>
+<pre>mosquitto_pub -t "plugin/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r</pre>
 </div>
 </div>
 </li>
