@@ -232,20 +232,20 @@ Plugin serves also as comfort driver for LED strip.
 
 * Generate data for all pixels through color attribute:
 +
- plugin/led-strip/data/set" {"color": [255,0,0,0]}
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"color": [255,0,0,0]}'
 
 * Use data/set color attribute to generate pixels:
 +
- plugin/led-strip/data/set" {"state": "color"}
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color"}'
 
 * Use rules matching to generate pixels:
 +
- plugin/led-strip/data/set" {"state": "rules"}
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
 
 ==== Examples
 * Use LED strip as light
 +
- mosquitto_pub -t "plugin/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'
 
 * Change LED strip brightness:
 +
@@ -253,19 +253,19 @@ Plugin serves also as comfort driver for LED strip.
 
 * Switch LED strip OFF
 +
- mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": false}' 
+ mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}' 
 
 * Switch LED strip ON
 +
- mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"state": true}' 
+ mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}' 
 
 NOTE: Pixels are preserved.
 
 * Request LED strip state
 +
- mosquitto_sub -v -t "nodes/base/led-strip/-" &
- mosquitto_pub -t "nodes/base/led-strip/-/get" -m '{}' 
- nodes/base/led-strip/- {"state": true}
+ mosquitto_sub -v -t "nodes/base/light/-" & 
+ mosquitto_pub -t "nodes/base/light/-/get" -m '{}' 
+ nodes/base/light/- {"state": true}
 
 
 ==== Change default thresholds
@@ -275,15 +275,14 @@ Everybody likes different environment so the preset thresholds for temperature a
 * Change the rules (first matching rule is used to set color):
 +
  mosquitto_pub -t "plugin/led-strip/config" -m '{
-  "values": [
+  "rules": [
       {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
       {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
       {"temperature": {"from":30}, "color": [255, 0, 0, 0]},
       {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
       {"color": [0, 0, 0, 255]},
-  ],
-  "brightness":255
- }'
+  ]
+ }' -r
 
 === Plugin blynk
 
