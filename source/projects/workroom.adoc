@@ -169,18 +169,18 @@ TIP: Use Ctrl-C to stop measurements monitoring.
 [start=4]
 . Use LED strip as light and set luminosity:
 + 
- mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
 
 . Update and retain LED strip brightness:
 +
- mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}' -r
+ mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}' -r
 
 IMPORTANT: Notice *-r* to store topic in MQTT broker as persistent configuration
 
 [start=6]
 . Use LED strip as humidity and temperature indicator:
 + 
- mosquitto_pub -t "plugins/led-strip/data/set" -m '{"state": "rules"}'
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
 
 
 === Sensors on remote
@@ -232,24 +232,24 @@ Plugin serves also as comfort driver for LED strip.
 
 * Generate data for all pixels through color attribute:
 +
- plugins/led-strip/data/set" {"color": [255,0,0,0]}
+ plugin/led-strip/data/set" {"color": [255,0,0,0]}
 
 * Use data/set color attribute to generate pixels:
 +
- plugins/led-strip/data/set" {"state": "color"}
+ plugin/led-strip/data/set" {"state": "color"}
 
 * Use rules matching to generate pixels:
 +
- plugins/led-strip/data/set" {"state": "rules"}
+ plugin/led-strip/data/set" {"state": "rules"}
 
 ==== Examples
 * Use LED strip as light
 +
- mosquitto_pub -t "plugins/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'
+ mosquitto_pub -t "plugin/led-strip/config" -m '{"state": "color", "color": [0, 0, 0, 255]}], "brightness": 200}'
 
 * Change LED strip brightness:
 +
- mosquitto_pub -t "plugins/led-strip/data/set" '{"brightness": 100}'
+ mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}'
 
 * Switch LED strip OFF
 +
@@ -274,7 +274,7 @@ Everybody likes different environment so the preset thresholds for temperature a
 
 * Change the rules (first matching rule is used to set color):
 +
- mosquitto_pub -t "plugins/led-strip/config" -m '{
+ mosquitto_pub -t "plugin/led-strip/config" -m '{
   "values": [
       {"relative-humidity": {"from": 60}, "color": [0, 255, 0, 0]},
       {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
@@ -291,5 +291,5 @@ JavaScript integration plugin with http://www.blynk.cc/[Blynk]
 
 * Configure Blynk token for virtual HW
 +
- mosquitto_pub -t "plugins/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r
+ mosquitto_pub -t "plugin/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r
 
