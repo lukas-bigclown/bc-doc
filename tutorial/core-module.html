@@ -1,0 +1,424 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>BigClown Labs - Core Module</title>
+
+    <link href="/stylesheets/main.css" rel="stylesheet" />
+
+      <!-- Google Tag Manager -->
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N2WMQSW');
+</script>
+  </head>
+
+  <body>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N2WMQSW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header>
+  <a href="http://doc.bigclown.com/">
+    <img src="/images/bigclown-logo.svg" alt="BigClown - Open-Source Electronics" class="header-logo" />
+  </a>
+</header>
+
+
+    <input type="checkbox" id="navbar-toggle" role="button" />
+<label for="navbar-toggle">
+  <span class="icon-burger"></span>
+</label>
+
+<nav class="navbar">
+  <ul>
+  <li class="level1">
+    <a href="/projects/">Projects</a>
+      <ul>
+  <li class="level2">
+    <a href="/projects/bridge.html">Bridge Project</a>
+  </li>
+  <li class="level2">
+    <a href="/projects/workroom.html">Workroom Project</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/tutorial/">Tutorials</a>
+      <ul>
+  <li class="level2">
+    <a href="/tutorial/blynk.html">Blynk - Mobile App Builder</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/core-module.html" class="current">Core Module</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/ifttt.html">IFTTT - If This Then That</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/mosquitto.html">Mosquitto - MQTT Broker</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/node-red.html">Node RED - Visual Tool for IoT</a>
+  </li>
+  <li class="level2">
+    <a href="/tutorial/install-rpi.html">Raspberry Pi - Installation</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/academy/">Academy</a>
+      <ul>
+  <li class="level2">
+    <a href="/academy/clown-talk.html">Clown.Talk &amp; Clown.Model</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/i2c.html">I<sup>2</sup>C - Communication Interface</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/mqtt.html">MQTT - Messaging via Broker</a>
+  </li>
+  <li class="level2">
+    <a href="/academy/websocket.html">WebSocket - Real-time Protocol</a>
+  </li>
+</ul>
+
+  </li>
+  <li class="level1">
+    <a href="/hardware/">Hardware Description</a>
+  </li>
+</ul>
+
+</nav>
+
+
+    <div id="main-wrapper">
+      <div class="toolbar">
+  <ul class="toolbar-actions">
+    <li>
+      <a href="https://github.com/bigclownlabs/bc-doc/edit/master/source/tutorial/core-module.adoc" rel="external" title="Edit on GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon"><use xlink:href="#icon-pencil" /></svg><span class="icon-label">Improve this page</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      <article class="main-content tutorial tutorial_core-module">
+        <h1>
+          Core Module
+        </h1>
+        <div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_block_diagram">1. Block Diagram</a></li>
+<li><a href="#_firmware_programming">2. Firmware programming</a>
+<ul class="sectlevel2">
+<li><a href="#_using_serial_wire_debug_swd_interface">2.1. Using Serial-Wire-Debug (SWD) interface</a></li>
+<li><a href="#_using_integrated_bootloader">2.2. Using integrated bootloader</a></li>
+<li><a href="#_programming_using_usb_dfu_bootloader">2.3. Programming using USB DFU bootloader</a></li>
+</ul>
+</li>
+<li><a href="#_firmware_files">3. Firmware files</a></li>
+<li><a href="#_firmware_building">4. Firmware building</a></li>
+<li><a href="#_debugging">5. Debugging</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This tutorial will guide you through some fundamental insights about Core Module.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_block_diagram"><a class="anchor" href="#_block_diagram"></a>1. Block Diagram</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO: Insert block diagram and describe it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_firmware_programming"><a class="anchor" href="#_firmware_programming"></a>2. Firmware programming</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Firmware of Core Module is a program stored in an internal flash memory of the microcontroller.
+In this chapter we will call <em>programming</em> a process of writing firmware into this internal flash memory.</p>
+</div>
+<div class="paragraph">
+<p>There are several options how Core Module can be programmed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Using Serial-Wire-Debug (SWD) interface</p>
+</li>
+<li>
+<p>Using integrated bootloader</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These interfaces are further explained in the chapters below.</p>
+</div>
+<div class="sect2">
+<h3 id="_using_serial_wire_debug_swd_interface"><a class="anchor" href="#_using_serial_wire_debug_swd_interface"></a>2.1. Using Serial-Wire-Debug (SWD) interface</h3>
+<div class="paragraph">
+<p>This interface allows not only programming but also program debugging.</p>
+</div>
+<div class="paragraph">
+<p>A special hardware tool is needed if you want to go this way - a debugger.
+BigClown recommends J-Link from Segger but other tools will work as well.</p>
+</div>
+<div class="paragraph">
+<p>The debugger is connected via a 10-pin connector on Core Module.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Please, pay attention to a proper debug cable orientation.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>TODO: Insert the picture of Core Module with debug cable connected.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_integrated_bootloader"><a class="anchor" href="#_using_integrated_bootloader"></a>2.2. Using integrated bootloader</h3>
+<div class="paragraph">
+<p>Bootloader is a small program delivered by STMicroelectronics during microcontroller production.
+This program is stored in read-only memory (ROM) and always co-exists next to the application firmware.
+The most important feature of the bootloader is the internal flash memory programming.</p>
+</div>
+<div class="paragraph">
+<p>The bootloader is started after the microcontroller&#8217;s reset when the BOOT signal is in log. 1.
+The reason why Core Module has both RESET signal and BOOT signal connected to push buttons, is to allow the user to enter this bootloader program manually.
+It can be also done programatically because both of these signals are connected to pin header as well.</p>
+</div>
+<div class="paragraph">
+<p>There are several communication interfaces that can be used to talk to the bootloader:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>USART1 &amp; USART2 (serial port)</p>
+</li>
+<li>
+<p>USB using a DFU class (Device Firmware Upgrade)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We will describe the later one in the chapter below.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_programming_using_usb_dfu_bootloader"><a class="anchor" href="#_programming_using_usb_dfu_bootloader"></a>2.3. Programming using USB DFU bootloader</h3>
+<div class="paragraph">
+<p>Invoking USB DFU bootloader can be done in just a few simple steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure the <strong>USB cable</strong> is connected to your desktop (host).</p>
+</li>
+<li>
+<p>Press the <strong>BOOT button</strong> on Core Module and keep it pressed.<br>
+BOOT button is on the right side and is marked with letter "B".</p>
+</li>
+<li>
+<p>Press the <strong>RESET button</strong> on Core Module while BOOT button is still held.<br>
+BOOT button is on the left side and is marked with letter "R".</p>
+</li>
+<li>
+<p>Release the <strong>RESET button</strong>.</p>
+</li>
+<li>
+<p>Release the <strong>BOOT button</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>At this moment Core Module should enumerate to host as USB DFU-capable device.</p>
+</div>
+<div class="paragraph">
+<p>This procedure can be done very quickly after some practicing.</p>
+</div>
+<div class="paragraph">
+<p>In the chapters below we will show you how to program the firmware on individual host platforms.</p>
+</div>
+<div class="sect3">
+<h4 id="_on_windows_desktop"><a class="anchor" href="#_on_windows_desktop"></a>2.3.1. On Windows desktop</h4>
+<div class="paragraph">
+<p>TODO: &#8230;&#8203;</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_on_macos_desktop"><a class="anchor" href="#_on_macos_desktop"></a>2.3.2. On macOS desktop</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Terminal application.</p>
+</li>
+<li>
+<p>Change directory (command <code>cd</code>) to folder with <code>firmware.bin</code> file.</p>
+</li>
+<li>
+<p>Make sure <a href="http://brew.sh">Homebrew</a> is installed in the system.</p>
+</li>
+<li>
+<p>Install <code>dfu-util</code> package by the following command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>brew install dfu-util</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Program the firmware to Core Module by the following command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Press the RESET button to start the program.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Core Module must be in bootloader DFU mode prior executing last command.
+For more information, please refer to this <a href="#_programming_using_usb_dfu_bootloader">section</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_on_ubuntu_desktop"><a class="anchor" href="#_on_ubuntu_desktop"></a>2.3.3. On Ubuntu desktop</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Terminal application.</p>
+</li>
+<li>
+<p>Change directory (command <code>cd</code>) to folder with <code>firmware.bin</code> file.</p>
+</li>
+<li>
+<p>Install <code>dfu-util</code> package by the following command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get install dfu-util</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Program the firmware to Core Module by the following command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Press the RESET button to start the program.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Core Module must be in bootloader DFU mode prior executing last command.
+For more information, please refer to this <a href="#_programming_using_usb_dfu_bootloader">section</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_firmware_files"><a class="anchor" href="#_firmware_files"></a>3. Firmware files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is possible to build your own firmware.
+But not until we release the source codes on our <a href="https://github.com/bigclownlabs">GitHub account</a>.
+We still want to polish a few things to provide you with a proper start.</p>
+</div>
+<div class="paragraph">
+<p>So far you can download two binary files for <a href="../projects/workroom.html">Workroom project</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="core-module/bc-workroom-base.binary">Base unit</a></p>
+</li>
+<li>
+<p><a href="core-module/bc-workroom-remote.binary">Remote unit</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_firmware_building"><a class="anchor" href="#_firmware_building"></a>4. Firmware building</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO: Describe firmware build process with arm-none-eabi-gcc + Makefile.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_debugging"><a class="anchor" href="#_debugging"></a>5. Debugging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO: Describe setup and operation with J-Link debugger and gdb / Ozone debugger.</p>
+</div>
+</div>
+</div>
+      </article>
+
+      <footer>
+  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+</footer>
+
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1"
+     style="position: absolute; width: 0; height: 0; overflow: hidden;">
+  <defs>
+    <symbol id="icon-pencil" viewBox="0 0 28 32">
+      <title>pencil</title>
+      <path d="M22 2l-4 4 6 6 4-4-6-6zM0 24l0.021 6.018 5.979-0.018 16-16-6-6-16 16zM6 28h-4v-4h2v2h2v2z"/>
+    </symbol>
+  </defs>
+</svg>
+
+  </body>
+</html>
