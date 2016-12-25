@@ -164,6 +164,10 @@ So far you can download two binary files for link:../projects/workroom.html[Work
 * link:core-module/bc-workroom-base.binary[Base unit]
 * link:core-module/bc-workroom-remote.binary[Remote unit]
 
+=== Workroom Remote firmware features
+* Automatic sending of temperature and humidity every 30 seconds
+* Sends message when button pressed
+* Sends message when pin P8 is grounded
 
 == Firmware building
 
