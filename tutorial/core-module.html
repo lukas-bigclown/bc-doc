@@ -261,9 +261,69 @@ BOOT button is on the left side and is marked with letter "R".</p>
 <p>In the chapters below we will show you how to program the firmware on individual host platforms.</p>
 </div>
 <div class="sect3">
-<h4 id="_on_windows_desktop"><a class="anchor" href="#_on_windows_desktop"></a>2.3.1. On Windows desktop</h4>
-<div class="paragraph">
-<p>TODO: &#8230;&#8203;</p>
+<h4 id="_on_windows_10_64bit_desktop"><a class="anchor" href="#_on_windows_10_64bit_desktop"></a>2.3.1. On Windows 10 64bit desktop</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Command Prompt (command <code>cmd</code>).</p>
+</li>
+<li>
+<p>Change directory (command <code>cd</code>) to folder with <code>firmware.bin</code> file.</p>
+</li>
+<li>
+<p>Download and execute <a href="http://zadig.akeo.ie/downloads/zadig_2.2.exe">Zadig 2.2</a>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select "Options" &#8594; "List All Devices".</p>
+</li>
+<li>
+<p>Select "STM32 BOOTLOADER" device.</p>
+</li>
+<li>
+<p>Select "WinUSB" driver for installation.</p>
+</li>
+<li>
+<p>Click "Reinstall Driver" button.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Download <a href="http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip">dfu-util-0.9-win64.zip</a>.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Extract (unzip) <code>dfu-util-static.exe</code> into directory with firmware.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Program the firmware to Core Module by the following command:</p>
+<div class="literalblock">
+<div class="content">
+<pre>dfu-util-static -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Press the RESET button to start the program.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Core Module must be in bootloader DFU mode prior executing last command.
+For more information, please refer to this <a href="#_programming_using_usb_dfu_bootloader">section</a>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
