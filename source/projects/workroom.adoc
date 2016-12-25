@@ -44,6 +44,7 @@ image::block-diagram.png[]
 == What will we need?
 
 All items can be purchased as a https://shop.bigclown.com/products/workroom-project-collection[pre-installed set] in our e-shop.
+If you buy core modules as a separate items, you have to program them link:../tutorial/core-module.html[by this Core module tutorial].
 
 Individual components in the set are:
 
