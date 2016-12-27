@@ -175,13 +175,12 @@ TODO: Describe firmware build process with arm-none-eabi-gcc + Makefile.
 
 === J-link Ozone Debugger
 
-J-link Ozone is free Windows, Linux and Mac OS graphical debugger with usual debugger features like breakpoints and single step and advanced features like live watch, graphing of variables and MCU register view (from SVD file).
-Download the debugger from link:https://www.segger.com/downloads/jlink#Ozone[J-link Ozone download page]
+J-link Ozone is a free graphical debugger for Windows, Linux and macOS.
+It provides usual debugger features like breakpoints and single step, advanced features like live watch, graphing of variables and MCU register view (from SVD file).
+Download the debugger from https://www.segger.com/downloads/jlink#Ozone[J-link Ozone download page].
 
-* Start Ozone debugger and select New Project Wizard
-* In target device dialog select STM32L083CZ device and optionally SVD files with register descriptions (TODO: Where to get it?)
-* In connection settings select SWD and 5MHz speed and USB interface (TODO: what is the max speed?)
-* In data file dialog select *.elf file from previous compilation step.
-* Press F5 for Start debugging
+To start the Ozone debugging simply run `make ozone`.
+You can run also Ozone manually and in `File > Open...` load configruration file `bc-core-module/tools/ozone/ozone.jdebug`.
+Press F5 to start the debugging.
 
 TODO: Describe setup and operation with J-Link debugger and gdb / Ozone debugger.
