@@ -127,7 +127,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
 <li><a href="#_firmware_files">3. Firmware files</a></li>
 <li><a href="#_firmware_building">4. Firmware building</a></li>
-<li><a href="#_debugging">5. Debugging</a></li>
+<li><a href="#_debugging">5. Debugging</a>
+<ul class="sectlevel2">
+<li><a href="#_j_link_ozone_debugger">5.1. J-link Ozone Debugger</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="preamble">
@@ -456,8 +460,21 @@ We still want to polish a few things to provide you with a proper start.</p>
 <div class="sect1">
 <h2 id="_debugging"><a class="anchor" href="#_debugging"></a>5. Debugging</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_j_link_ozone_debugger"><a class="anchor" href="#_j_link_ozone_debugger"></a>5.1. J-link Ozone Debugger</h3>
+<div class="paragraph">
+<p>J-link Ozone is a free graphical debugger for Windows, Linux and macOS.
+It provides usual debugger features like breakpoints and single step, advanced features like live watch, graphing of variables and MCU register view (from SVD file).
+Download the debugger from <a href="https://www.segger.com/downloads/jlink#Ozone">J-link Ozone download page</a>.</p>
+</div>
+<div class="paragraph">
+<p>To start the Ozone debugging simply run <code>make ozone</code>.
+You can run also Ozone manually and in <code>File &gt; Open&#8230;&#8203;</code> load configruration file <code>bc-core-module/tools/ozone/ozone.jdebug</code>.
+Press F5 to start the debugging.</p>
+</div>
 <div class="paragraph">
 <p>TODO: Describe setup and operation with J-Link debugger and gdb / Ozone debugger.</p>
+</div>
 </div>
 </div>
 </div>
