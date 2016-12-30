@@ -174,7 +174,7 @@ TIP: Use Ctrl-C to stop measurements monitoring.
 
 . Update and retain LED strip brightness:
 +
- mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}' -r
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -r
 
 IMPORTANT: Notice *-r* to store topic in MQTT broker as persistent configuration
 
@@ -250,7 +250,7 @@ Plugin serves also as comfort driver for LED strip.
 
 * Change LED strip brightness:
 +
- mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}'
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}'
 
 * Switch LED strip OFF
 +
