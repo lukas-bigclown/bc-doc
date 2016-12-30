@@ -483,7 +483,7 @@ Use Ctrl-C to stop measurements monitoring.
 <p>Update and retain LED strip brightness:</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}' -r</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -r</pre>
 </div>
 </div>
 </li>
@@ -652,7 +652,7 @@ nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}</pre>
 <p>Change LED strip brightness:</p>
 <div class="literalblock">
 <div class="content">
-<pre>mosquitto_pub -t "plugin/led-strip/data/set" '{"brightness": 100}'</pre>
+<pre>mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}'</pre>
 </div>
 </div>
 </li>
