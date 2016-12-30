@@ -161,104 +161,63 @@ How-to communicate with MQTT broker:
 
 . Default username is "pi" and password "raspberry"
 
-. Show measurements from remote (reported every 30 seconds):
+. Update the system
++
+ sudo apt-get update && sudo apt-get upgrade
+
+. Show all messages:
++
+ mosquitto_sub -v -t "#"
+
+TIP: Use Ctrl-C to stop monitoring.
+
+=== Remote node
+
+* Show messages from remote node (sensors reported every 30 seconds):
 +
  mosquitto_sub -v -t "nodes/remote/#"
-
-TIP: Use Ctrl-C to stop measurements monitoring.
-
-[start=4]
-. Use LED strip as light and set luminosity:
-+ 
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
-
-. Update and retain LED strip brightness:
-+
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -r
-
-IMPORTANT: Notice *-r* to store topic in MQTT broker as persistent configuration
-
-[start=6]
-. Use LED strip as humidity and temperature indicator:
-+ 
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
-
-
-=== Sensors on remote
 
 * Measured temperature and humidity values reported by Remote unit
 +
  nodes/remote/thermometer/i2c0-49 {"temperature": [23.62, "\u2103"]}
  nodes/remote/humidity-sensor/i2c0-40 {"relative-humidity": [33.2, "%"]}
+ nodes/remote/push-button/- {"event-count": 11}
 
 
-=== Relay on base
+=== Base node
+
+* Show messages from or for base node:
++
+ mosquitto_sub -v -t "nodes/base/#"
 
 * Relay has state true (switched on) or false (switched off)
 +
  nodes/base/relay/- {"state": true}
 
-==== Examples
+* Light (led and LED strip) has state true (switched on) or false (switched off)
++
+ nodes/base/light/- {"state": true}
 
 * Switch Relay ON
 +
- mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}' 
+ mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
 
 * Switch Relay OFF
 +
- mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}' 
+ mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
 
 * Request Relay state
 +
  mosquitto_sub -v -t "nodes/base/relay/-" &
- mosquitto_pub -t "nodes/base/relay/-/get" -m '{}' 
+ mosquitto_pub -t "nodes/base/relay/-/get" -m '{}'
 
-
-=== LED strip on base
-
-* Desired color of the LED strip connected to Base unit
+* Switch Light ON
 +
-  nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}
+ mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
 
-* LED strip configuration
+* Switch Light OFF
 +
- nodes/base/led-strip/-/config/set {"mode": "rgb", "count": 150}
- nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}
-
-=== Plugin led-strip
-
-Temperature and humididy limits are evaluated by Python script running on Raspberry Pi in Linux (we use Raspbian as the official Linux distribution).
-
-Plugin serves also as comfort driver for LED strip.
-
-* Generate data for all pixels through color attribute:
-+
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"color": [255,0,0,0]}'
-
-* Use data/set color attribute to generate pixels:
-+
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color"}'
-
-* Use rules matching to generate pixels:
-+
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
-
-==== Examples
-* Use LED strip as light
-+
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 255], "brightness": 200}'
-
-* Change LED strip brightness:
-+
- mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}'
-
-* Switch LED strip OFF
-+
- mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}' 
-
-* Switch LED strip ON
-+
- mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}' 
+ mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'
 
 NOTE: Pixels are preserved.
 
@@ -266,12 +225,57 @@ NOTE: Pixels are preserved.
 +
  mosquitto_sub -v -t "nodes/base/light/-" & 
  mosquitto_pub -t "nodes/base/light/-/get" -m '{}' 
- nodes/base/light/- {"state": true}
+
+* Set own colors on LED strip
++
+  mosquitto_pub -t "nodes/base/led-strip/-/set" -m '{"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}'
+
++
+Pixels contains array of bytes in base64, size of array in example is 4 * 144 bytes.
 
 
-==== Change default thresholds
+* LED strip configuration
++
+ mosquitto_pub -t "nodes/base/led-strip/-/config/set" -m '{"mode": "rgb", "count": 150}'
+ mosquitto_pub -t "nodes/base/led-strip/-/config/set" -m '{"mode": "rgbw", "count": 144}'
++
+Confirmation:
++
+ nodes/base/led-strip/-/config/set/ok {"count": 150, "mode": "rgb"}
 
-Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.
++
+Count can be set from 1 to 150.
+
+=== Plugin led-strip
+
+Temperature and humididy limits are evaluated by Python script running on Raspberry Pi in Linux (we use Raspbian as the official Linux distribution).
+
+Plugin serves also as comfort driver for LED strip.
+
+* Use rules matching to generate pixels:
++
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
+
+* Use data/set color attribute to generate pixels:
++
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color"}'
+
+* Generate data for all pixels through color attribute:
++
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"color": [255,0,0,0]}'
+
+* Or use one command:
++
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [255, 0, 0, 0]}'
+
+* Change LED strip brightness:
++
+ mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -rB
+
++
+Brightness can be set from 0 to 255.
+
+IMPORTANT: Notice *-r* to store topic in MQTT broker as persistent configuration
 
 * Change the rules (first matching rule is used to set color):
 +
@@ -281,9 +285,20 @@ Everybody likes different environment so the preset thresholds for temperature a
       {"relative-humidity": {"to": 30}, "color": [255, 255, 0, 0]},
       {"temperature": {"from":30}, "color": [255, 0, 0, 0]},
       {"temperature": {"to": 22}, "color": [0, 0, 255, 0]},
-      {"color": [0, 0, 0, 255]}
+      {"color": [0, 0, 0, 230]}
   ]
  }' -r
+
++
+Everybody likes different environment so the preset thresholds for temperature and humidity might not be optimal for you.
+
+IMPORTANT: Color is in RGBW format, even if you use RGB mode.
+
+NOTE: If you switch led-strip to rgb mod and not change rules, it may seem that doesn't work, but probably win last rule,
+and for rgb mode they are used first three bytes [0 ,0, 0].
+
++
+Plugin subscribe "nodes/base/led-strip/-/config/set/ok" and react on changes count and mode. 
 
 === Plugin blynk
 
@@ -291,5 +306,5 @@ JavaScript integration plugin with http://www.blynk.cc/[Blynk]
 
 * Configure Blynk token for virtual HW
 +
- mosquitto_pub -t "plugin/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r
+ mosquitto_pub -t "plugin/blynk/config" -m '{"token":"your_token"}' -r
 
