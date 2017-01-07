@@ -1,8 +1,8 @@
 # Raspberry Pi - Installation
 
-{% set raspbian-zip = "bc-raspbian-v1.0.1-armhf-rpi.zip" %}
-{% set raspbian-img = "bc-raspbian-v1.0.1-armhf-rpi.img" %}
-{% set note-sudo = "“sudo” means the process will start with administrator privileges and may require your account password (if you are eligible for administrator rights)." %}
+{% set raspbian_zip = "bc-raspbian-v1.0.1-armhf-rpi.zip" %}
+{% set raspbian_img = "bc-raspbian-v1.0.1-armhf-rpi.img" %}
+{% set note_sudo = "“sudo” means the process will start with administrator privileges and may require your account password (if you are eligible for administrator rights)." %}
 
 > If you already have your Raspberry Pi with Raspbian running on it, you can skip to [Install BigClown packages on existing system](#install-bigclown-packages-on-existing-system) to see how to install BigClown packages to your existing system.
 
@@ -30,7 +30,7 @@ We will install BigClown's version of Raspbian - the official and the most popul
 
 1. Insert the MicroSD card to the MicroSD card reader.
 
-2. Download the latest release of BigClown's Raspbian image from [this link](https://github.com/bigclownlabs/bc-raspbian/releases/download/v1.0.1/{{ raspbian-zip }}).
+2. Download the latest release of BigClown's Raspbian image from [this link](https://github.com/bigclownlabs/bc-raspbian/releases/download/v1.0.1/{{ raspbian_zip }}).
 
 
 ### On Windows desktop
@@ -39,7 +39,7 @@ We will install BigClown's version of Raspbian - the official and the most popul
 
    You can use http://www.7-zip.org[7-Zip] to do it.
 
-4. Write `{{ raspbian-img }}` to the MicroSD card.
+4. Write `{{ raspbian_img }}` to the MicroSD card.
 
    You can use https://sourceforge.net/projects/win32diskimager/files/latest/download[Win32 Disk Imager] to do it.
 
@@ -57,7 +57,7 @@ We will install BigClown's version of Raspbian - the official and the most popul
 4. Unzip the downloaded image:
 
    ```
-   unzip {{ raspbian-zip }}
+   unzip {{ raspbian_zip }}
    ```
 
 5. Insert the MicroSD card to your Mac and find out what is the disk identifier (it will be /dev/diskX):
@@ -75,10 +75,10 @@ We will install BigClown's version of Raspbian - the official and the most popul
 7. Write the image to the MicroSD card (replace X with the appropriate identifier):
 
    ```
-   sudo dd if={{ raspbian-img }} of=/dev/rdiskX bs=1m
+   sudo dd if={{ raspbian_img }} of=/dev/rdiskX bs=1m
    ```
 
-   > {{ note-sudo }}
+   > {{ note_sudo }}
 
   This will take some time.
   If you get a “permission denied” message, please make sure your MicroSD card is not write-protected (e.g. by SD card adapter).
@@ -101,7 +101,7 @@ We will install BigClown's version of Raspbian - the official and the most popul
 4. Unzip the downloaded image:
 
    ```
-   unzip {{ raspbian-zip }}
+   unzip {{ raspbian_zip }}
    ```
 
 5. Insert the MicroSD card to your Linux desktop and find out what is the disk identifier (it will be /dev/sdX):
@@ -116,12 +116,12 @@ We will install BigClown's version of Raspbian - the official and the most popul
    sudo umount /dev/sdX?
    ```
 
-   > {{ note-sudo }}
+   > {{ note_sudo }}
 
 7. Write the image to the card (replace X with the appropriate identifier):
 
    ```
-   sudo dd if={{ raspbian-img }} of=/dev/sdX bs=1M status=progress
+   sudo dd if={{ raspbian_img }} of=/dev/sdX bs=1M status=progress
    ```
 
    This will take some time.

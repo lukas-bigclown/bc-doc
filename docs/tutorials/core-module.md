@@ -109,7 +109,7 @@ In the chapters below we will show you how to program the firmware on individual
 . Press the RESET button to start the program.
 
 > Core Module must be in bootloader DFU mode prior executing last command.
-  For more information, please refer to this: [Programming using USB DFU bootloader](#programming-using-usb-dfu-bootloader)
+> For more information, please refer to [Programming using USB DFU bootloader](#programming-using-usb-dfu-bootloader).
 
 
 #### On macOS desktop
@@ -118,7 +118,7 @@ In the chapters below we will show you how to program the firmware on individual
 
 2. Change directory (command `cd`) to folder with `firmware.bin` file.
 
-3. Make sure http://brew.sh[Homebrew] is installed in the system.
+3. Make sure [Homebrew](http://brew.sh) is installed in the system.
 
 4. Install `dfu-util` package by the following command:
 
@@ -131,7 +131,7 @@ In the chapters below we will show you how to program the firmware on individual
 6. Press the RESET button to start the program.
 
 > Core Module must be in bootloader DFU mode prior executing last command.
-For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
+> For more information, please refer to [Programming using USB DFU bootloader](#programming-using-usb-dfu-bootloader).
 
 
 #### On Ubuntu desktop
@@ -151,7 +151,7 @@ For more information, please refer to this TODO: <<Programming using USB DFU boo
 5. Press the RESET button to start the program.
 
 > Core Module must be in bootloader DFU mode prior executing last command.
-For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
+> For more information, please refer to this [Programming using USB DFU bootloader](#)
 
 
 ## Firmware files

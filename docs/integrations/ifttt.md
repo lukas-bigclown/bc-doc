@@ -75,7 +75,7 @@ You can send up to **3 values** in one request.
 ## Example
 
 A simple **Python 3** example for BigClown Hub has been provided to test IFTTT service.
-You can find it in the following GitHub repository: https://github.com/bigclownlabs/bc-ifttt[**BigClown IFTTT Service Integration Example**].
+You can find it in the following GitHub repository: [**BigClown IFTTT Service Integration Example**](https://github.com/bigclownlabs/bc-ifttt).
 
 
 ### Usage

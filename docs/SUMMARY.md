@@ -3,6 +3,7 @@
 ## Tutorials
 * [Install Raspberry Pi](tutorials/install-rpi.md)
 * [Core Module](tutorials/core-module.md)
+* [Mosquitto - MQTT Broker](tutorials/mosquitto.md)
 
 ## Projects
 * [Workroom Project](projects/workroom.md)

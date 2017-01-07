@@ -106,7 +106,7 @@ Again, use http://hub.local or the IP from the previous chapter.
    * Use password: `raspberry`
 
 
-### SSH from OS X & Linux desktop
+### SSH from OS X / Linux desktop
 
 1. Open Terminal and connect to Raspberry Pi:
 
