@@ -108,7 +108,7 @@ In the chapters below we will show you how to program the firmware on individual
 . Press the RESET button to start the program.
 
 > Core Module must be in bootloader DFU mode prior executing last command.
-  For more information, please refer to this <<Programming using USB DFU bootloader,section>>.
+  For more information, please refer to this TODO <<Programming using USB DFU bootloader,section>>.
 
 
 
