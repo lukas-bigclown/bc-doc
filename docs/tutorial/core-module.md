@@ -1,6 +1,6 @@
 # Core Module
-:sectnums:
-:toc:
+
+<!-- toc -->
 
 This tutorial will guide you through some fundamental insights about Core Module.
 
@@ -51,6 +51,7 @@ It can be also done programatically because both of these signals are connected 
 There are several communication interfaces that can be used to talk to the bootloader:
 
 * USART1 & USART2 (serial port)
+
 * USB using a DFU class (Device Firmware Upgrade)
 
 We will describe the later one in the chapter below.
