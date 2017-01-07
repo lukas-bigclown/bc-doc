@@ -81,7 +81,7 @@ This procedure can be done very quickly after some practicing.
 In the chapters below we will show you how to program the firmware on individual host platforms.
 
 
-#### On Windows 10 64bit desktop
+#### On Windows 10 64-bit desktop
 
 1. Open Command Prompt (command `cmd`).
 
@@ -89,26 +89,26 @@ In the chapters below we will show you how to program the firmware on individual
 
 3. Download and execute http://zadig.akeo.ie/downloads/zadig_2.2.exe[Zadig 2.2].
 
-.. Select "Options" -> "List All Devices".
+   1. Select "Options" -> "List All Devices".
 
-.. Select "STM32 BOOTLOADER" device.
+   2. Select "STM32 BOOTLOADER" device.
 
-.. Select "WinUSB" driver for installation.
+   3. Select "WinUSB" driver for installation.
 
-.. Click "Reinstall Driver" button.
+   4. Click "Reinstall Driver" button.
 
-. Download http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip[dfu-util-0.9-win64.zip].
+4. Download [dfu-util-0.9-win64.zip](http://dfu-util.sourceforge.net/releases/dfu-util-0.9-win64.zip).
 
-.. Extract (unzip) `dfu-util-static.exe` into directory with firmware.
+5. Extract (unzip) `dfu-util-static.exe` into directory with firmware.
 
-. Program the firmware to Core Module by the following command:
-+
+6. Program the firmware to Core Module by the following command:
+
     dfu-util-static -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin
 
 . Press the RESET button to start the program.
 
-NOTE: Core Module must be in bootloader DFU mode prior executing last command.
-For more information, please refer to this <<Programming using USB DFU bootloader,section>>.
+> Core Module must be in bootloader DFU mode prior executing last command.
+  For more information, please refer to this <<Programming using USB DFU bootloader,section>>.
 
 
 
