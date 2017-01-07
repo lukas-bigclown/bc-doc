@@ -81,7 +81,7 @@ This procedure can be done very quickly after some practicing.
 In the chapters below we will show you how to program the firmware on individual host platforms.
 
 
-==== On Windows 10 64bit desktop
+#### On Windows 10 64bit desktop
 
 . Open Command Prompt (command `cmd`).
 
@@ -112,7 +112,7 @@ For more information, please refer to this <<Programming using USB DFU bootloade
 
 
 
-==== On macOS desktop
+#### On macOS desktop
 
 . Open Terminal application.
 
