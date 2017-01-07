@@ -33,7 +33,7 @@ BigClown recommends J-Link from Segger but other tools will work as well.
 
 The debugger is connected via a 10-pin connector on Core Module.
 
-NOTE: Please, pay attention to a proper debug cable orientation.
+> Please, pay attention to a proper debug cable orientation.
 
 TODO: Insert the picture of Core Module with debug cable connected.
 
