@@ -1,6 +1,7 @@
 # Summary
 
 ## Tutorials
+* [Install Raspberry Pi](tutorials/install-rpi.md)
 * [Core Module](tutorials/core-module.md)
 
 ## Projects
