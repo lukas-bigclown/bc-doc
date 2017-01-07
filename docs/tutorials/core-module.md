@@ -160,7 +160,7 @@ It is possible to build your own firmware.
 But not until we release the source codes on our [GitHub account](https://github.com/bigclownlabs).
 We still want to polish a few things to provide you with a proper start.
 
-So far you can download two binary files for link:../projects/workroom.html[Workroom project]:
+So far you can download two binary files for [Workroom project](../projects/workroom.md):
 
 * [Base unit](core-module/bc-workroom-base.binary)
 
