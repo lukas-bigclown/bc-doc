@@ -3,5 +3,12 @@
   "title": "BigClown Documentation",
   "description": "",
   "author": "BigClown Labs s.r.o.",
-  "gitbook": ">=3.2.2"
+  "gitbook": ">=3.2.2",
+  "plugins": ["edit-link"],
+    "pluginsConfig": {
+      "edit-link": {
+        "base": "https://github.com/hubpav/bc-doc/edit/master/docs",
+        "label": "Edit This Page"
+    }
+  }
 }
