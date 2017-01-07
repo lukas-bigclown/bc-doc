@@ -137,4 +137,4 @@ The relay is switched on depending on changing light levels measured by the lux 
 You have now successfully created your first automated script.
 Node-RED makes the creation of such automation much easier.
 
-Don’t forget: after trying it out set the name and password for Node-RED according to the [instructions on the website](http://nodered.org/docs/security).
+Don’t forget: after trying it out set the name and password for Node-RED according to [these instructions](http://nodered.org/docs/security).
