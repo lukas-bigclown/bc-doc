@@ -1,9 +1,10 @@
 # Summary
 
-* [Introduction](README.md)
+## Tutorials
 * [Core Module](tutorial/core-module.adoc)
+* [Introduction](README.md)
 
 ## Projects
-
 * [Workroom Project](projects/workroom.adoc)
 * [Bridge Project](projects/bridge.adoc)
+
