@@ -13,7 +13,7 @@ TODO: Insert block diagram and describe it.
 ## Firmware programming
 
 Firmware of Core Module is a program stored in an internal flash memory of the microcontroller.
-In this chapter we will call _programming_ a process of writing firmware into this internal flash memory.
+In this chapter we will call *programming* a process of writing firmware into this internal flash memory.
 
 There are several options how Core Module can be programmed:
 

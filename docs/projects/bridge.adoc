@@ -1,9 +1,6 @@
 = Bridge Project
 :imagesdir: images/bridge
 
-[no-bullet]
-*  
-+
 video::00WasmWBFjE[youtube, width=738, height=400]
 
 
