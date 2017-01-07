@@ -1,10 +1,11 @@
-= Bridge Project
-:imagesdir: images/bridge
+# Bridge Project
 
-video::00WasmWBFjE[youtube, width=738, height=400]
+{%youtube%}00WasmWBFjE{%endyoutube%}
+
+<!-- toc -->
 
 
-== What is it?
+## What is it?
 
 Bridge project is suitable for those, who would like to integrate our system with the 3rd party platforms or for those who are working on their own IoT or BigData projects.
 Bridge project allows you to quickly and easily connect our environmental sensors and/or actuators to your Raspberry Pi or any other Linux-based host.
@@ -23,10 +24,10 @@ You can also control relay through this web dashboard (with Relay Module) and co
 
 The hardware concept is best described by the following diagram:
 
-image::block-diagram.png[]
+![](images/bridge/block-diagram.png)
 
 
-== What will we need?
+## What will we need?
 
 All items can be purchased as https://shop.bigclown.com/products/bridge-project-collection[pre-installed set] in our e-shop.
 
@@ -45,96 +46,113 @@ Individual components in the set are:
 * 1x Enclosure for Raspberry Pi 3
 * 1x Power adapter for Raspberry Pi 3
 
-image::bridge-set.png[]
+![](images/bridge/bridge-set.png)
 
 
-== Installation instructions
+## Installation instructions
 
 You can either follow step-by-step instructions in the text below or watch this short video:
 
-[no-bullet]
-*  
-+
-video::J5jmx7RoLnY[youtube, width=738, height=400]
+{%youtube%}J5jmx7RoLnY{%endyoutube%}
 
-. Build the Bridge node +
-+
-image::build-bridge.png[]
-+
-. Connect Bridge Module to Raspberry Pi using MicroUSB cable +
-+
-image::connect-bridge-to-rpi.png[]
-+
-. Connect Ethernet cable to Raspberry Pi +
-+
-image::connect-ethernet-to-rpi.png[]
-+
-. Connect power adapter to Raspberry Pi and plug it to AC-line +
-+
-image::connect-power-to-rpi.png[]
-+
-. Wait until the Raspberry Pi boots up (approximately 30 seconds)
-. Open in your browser http://hub.local:8080 or
-  enter your local IP address http://x.x.x.x:8080 (how to find Raspberry Pi IP)
-. Dashboard shows all measured values, you can also control relay output with a button. +
-+
-image::dashboard.png[]
-+
+1. Build the Bridge node.
+
+   ![](images/bridge/build-bridge.png)
+
+2. Connect Bridge Module to Raspberry Pi using MicroUSB cable.
+
+   ![](images/bridge/connect-bridge-to-rpi.png)
+
+3. Connect Ethernet cable to Raspberry Pi.
+
+   ![](images/bridge/connect-ethernet-to-rpi.png)
+
+4. Connect power adapter to Raspberry Pi and plug it to AC-line.
+
+   ![](images/bridge/connect-power-to-rpi.png)
+
+5. Wait until the Raspberry Pi boots up (approximately 30 seconds).
+
+6. Open in your browser http://hub.local:8080 or enter your local IP address http://x.x.x.x:8080 (how to find Raspberry Pi IP)
+
+7. Dashboard shows all measured values, you can also control relay output with a button.
+
+   ![](images/bridge/dashboard.png)
 
 
-== Tweaking & Hacking
+## Tweaking & Hacking
 
 Next step is to login to Raspberry Pi via SSH terminal so we can later play with MQTT messages.
 Again, use http://hub.local or the IP from the previous chapter.
 
 
-=== SSH from Windows desktop
+### SSH from Windows desktop
 
-. Download PuTTY.
-. Open PuTTY and open SSH session:
-** For hostname use `hub.local` or `_IP-address-of-Raspberry-Pi_`
-. Use username: `pi`
-. Use password: `raspberry`
+1. Download PuTTY.
 
+2. Open PuTTY and open SSH session:
 
-=== SSH from OS X & Linux desktop
+   * For hostname use `hub.local` or `_IP-address-of-Raspberry-Pi_`
 
-. Open Terminal and connect to Raspberry Pi:
-** Using IP address: `ssh pi@_IP-address-of-Raspberry-Pi_`
-** Using zeroconf name: `ssh pi@hub.local`
-. Use username: `pi`
-. Use password: `raspberry`
+   * Use username: `pi`
+
+   * Use password: `raspberry`
 
 
-=== MQTT playground
+### SSH from OS X & Linux desktop
+
+1. Open Terminal and connect to Raspberry Pi:
+
+   * Using IP address: `ssh pi@_IP-address-of-Raspberry-Pi_`
+
+   * Using zeroconf name: `ssh pi@hub.local`
+
+   * Use username: `pi`
+
+   * Use password: `raspberry`
+
+
+### MQTT playground
 
 Look at measured values (this will subscribe to messages from MQTT broker running inside the Docker container):
 
- docker exec hub mosquitto_sub -v -t 'nodes/bridge/0/#'
+```
+docker exec hub mosquitto_sub -v -t 'nodes/bridge/0/#'
+```
 
 Set relay to “true” state (this will publish message to MQTT broker running inside the container):
 
- docker exec hub mosquitto_pub -t nodes/bridge/0/relay/i2c0-3b/set -m '{"state": true}'
+```
+docker exec hub mosquitto_pub -t nodes/bridge/0/relay/i2c0-3b/set -m '{"state": true}'
+```
 
 Set relay to “false” state:
 
- docker exec hub mosquitto_pub -t nodes/bridge/0/relay/i2c0-3b/set -m '{"state": false}'
+```
+docker exec hub mosquitto_pub -t nodes/bridge/0/relay/i2c0-3b/set -m '{"state": false}'
+```
 
 Turn on the LED on the bridge:
 
- docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "on"}'
+```
+docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "on"}'
+```
 
 Turn off the LED on the bridge
 
- docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "off"}'
+```
+docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "off"}'
+```
 
 Flashing LED on the bridge
 
- docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "1-dot"}'
- docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "2-dot"}'
- docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "3-dot"}'
+```
+docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "1-dot"}'
+docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "2-dot"}'
+docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "3-dot"}'
+```
 
 If you want to know more about MQTT, follow these links:
 
-* link:../academy/mqtt.html[MQTT - Messaging via Broker]
-* link:../tutorial/mosquitto.html[Mosquitto - MQTT Broker]
+* [MQTT - Messaging via Broker](../academy/mqtt.md)
+* [Mosquitto - MQTT Broker](../tutorial/mosquitto.html)
