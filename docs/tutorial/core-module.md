@@ -162,7 +162,7 @@ We still want to polish a few things to provide you with a proper start.
 
 So far you can download two binary files for link:../projects/workroom.html[Workroom project]:
 
-* [Base unit](../../core-module/bc-workroom-base.binary)
+* [Base unit](../../tutorial/core-module/bc-workroom-base.binary)
 
 * [Remote unit](/core-module/bc-workroom-remote.binary)
 
