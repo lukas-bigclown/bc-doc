@@ -6,4 +6,4 @@
 ## Projects
 
 * [Workroom Project](projects/workroom.adoc)
-
+* [Bridge Project](projects/bridge.adoc)
