@@ -4,6 +4,7 @@
 
 <!-- toc -->
 
+
 ## What is it?
 
 With this setup you will be able to monitor environmental conditions in your workroom.
@@ -60,7 +61,7 @@ Individual components in the set are:
 * 1x Power adapter for Raspberry Pi 3
 * 1x Power adapter for Power Module
 
-![Workroom Set](images/workroom-set.png)
+![](images/workroom/workroom-set.png)
 
 You will also need:
 
@@ -146,7 +147,7 @@ You can find more about MQTT here:
 
 * [MQTT - Messaging via Broker](../academy/mqtt.md)
 
-* [Mosquitto - MQTT Broker](../tutorial/mosquitto.html)
+* [Mosquitto - MQTT Broker](../tutorials/mosquitto.md)
 
 How-to communicate with MQTT broker:
 
@@ -160,23 +161,31 @@ How-to communicate with MQTT broker:
 
 3. Show measurements from remote (reported every 30 seconds):
 
-   `mosquitto_sub -v -t "nodes/remote/#"`
+   ```
+   mosquitto_sub -v -t "nodes/remote/#"
+   ```
 
    > Use Ctrl-C to stop measurements monitoring.
 
 4. Use LED strip as light and set luminosity:
 
-   `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'`
+   ```
+   mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 128]}'
+   ```
 
 5. Update and retain LED strip brightness:
 
-   `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -r`
+   ```
+   mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}' -r
+   ```
 
    > Notice *-r* to store topic in MQTT broker as persistent configuration
 
 6. Use LED strip as humidity and temperature indicator:
 
-   `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'`
+   ```
+   mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
+   ```
 
 
 ### Sensors on remote
@@ -193,18 +202,24 @@ How-to communicate with MQTT broker:
 
 * Relay has state true (switched on) or false (switched off)
 
-  `nodes/base/relay/- {"state": true}`
+  ```
+  nodes/base/relay/- {"state": true}
+  ```
 
 
 #### Examples
 
 * Switch Relay ON:
 
-  `mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'`
+  ```
+  mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": true}'
+  ```
 
 * Switch Relay OFF:
 
-  `mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'`
+  ```
+  mosquitto_pub -t "nodes/base/relay/-/set" -m '{"state": false}'
+  ```
 
 * Request Relay state
 
@@ -218,7 +233,9 @@ How-to communicate with MQTT broker:
 
 * Desired color of the LED strip connected to Base unit
 
-  `nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}`
+  ```
+  nodes/base/led-strip/-/set {"pixels": "/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA"}
+  ```
 
 * LED strip configuration
 
@@ -226,6 +243,7 @@ How-to communicate with MQTT broker:
   nodes/base/led-strip/-/config/set {"mode": "rgb", "count": 150}
   nodes/base/led-strip/-/config/set {"mode": "rgbw", "count": 144}
   ```
+
 
 ### Plugin led-strip
 
@@ -235,33 +253,47 @@ Plugin serves also as comfort driver for LED strip.
 
 * Generate data for all pixels through color attribute:
 
-  `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"color": [255,0,0,0]}'`
+  ```
+  mosquitto_pub -t "plugin/led-strip/data/set" -m '{"color": [255,0,0,0]}'
+  ```
 
 * Use data/set color attribute to generate pixels:
 
-  `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color"}'`
+  ```
+  mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color"}'
+  ```
 
 * Use rules matching to generate pixels:
 
-  `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'`
+  ```
+  mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "rules"}'
+  ```
 
 #### Examples
 
 * Use LED strip as light
 
-  `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 255], "brightness": 200}'`
+  ```
+  mosquitto_pub -t "plugin/led-strip/data/set" -m '{"state": "color", "color": [0, 0, 0, 255], "brightness": 200}'
+  ```
 
 * Change LED strip brightness:
 
-  `mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}'`
+  ```
+  mosquitto_pub -t "plugin/led-strip/data/set" -m '{"brightness": 100}'
+  ```
 
 * Switch LED strip OFF
 
-  `mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'`
+  ```
+  mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": false}'
+  ```
 
 * Switch LED strip ON
 
-  `mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'`
+  ```
+  mosquitto_pub -t "nodes/base/light/-/set" -m '{"state": true}'
+  ```
 
 > Pixels are preserved.
 
@@ -298,4 +330,6 @@ JavaScript integration plugin with [Blynk](http://www.blynk.cc/)
 
 * Configure Blynk token for virtual HW
 
-  `mosquitto_pub -t "plugin/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r`
+  ```
+  mosquitto_pub -t "plugin/blynk/config" -m '{"token":"ec9fdfdf0c7d49bcae3e83be3dceb4c1"}' -r
+  ```

@@ -29,7 +29,7 @@ The hardware concept is best described by the following diagram:
 
 ## What will we need?
 
-All items can be purchased as https://shop.bigclown.com/products/bridge-project-collection[pre-installed set] in our e-shop.
+All items can be purchased as [pre-installed set](https://shop.bigclown.com/products/bridge-project-collection) in our e-shop.
 
 Individual components in the set are:
 
@@ -47,6 +47,13 @@ Individual components in the set are:
 * 1x Power adapter for Raspberry Pi 3
 
 ![](images/bridge/bridge-set.png)
+
+You will also need:
+
+* Desktop/laptop computer
+* Ethernet cable
+* LAN router/switch with one available port
+* Internet connectivity
 
 
 ## Installation instructions
@@ -92,7 +99,7 @@ Again, use http://hub.local or the IP from the previous chapter.
 
 2. Open PuTTY and open SSH session:
 
-   * For hostname use `hub.local` or `_IP-address-of-Raspberry-Pi_`
+   * For hostname use `hub.local` or *IP address of Raspberry Pi*
 
    * Use username: `pi`
 
@@ -103,7 +110,7 @@ Again, use http://hub.local or the IP from the previous chapter.
 
 1. Open Terminal and connect to Raspberry Pi:
 
-   * Using IP address: `ssh pi@_IP-address-of-Raspberry-Pi_`
+   * Using IP address: `ssh pi@`*IP address of Raspberry Pi*
 
    * Using zeroconf name: `ssh pi@hub.local`
 
@@ -155,4 +162,5 @@ docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "3-dot"}
 If you want to know more about MQTT, follow these links:
 
 * [MQTT - Messaging via Broker](../academy/mqtt.md)
+
 * [Mosquitto - MQTT Broker](../tutorial/mosquitto.html)
