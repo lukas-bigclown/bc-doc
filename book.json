@@ -3,7 +3,7 @@
   "title": "BigClown Documentation",
   "description": "",
   "author": "BigClown Labs s.r.o.",
-  "gitbook": ">=3.0.0",
+  "gitbook": ">= 3.0.0",
   "plugins": ["edit-link", "youtubex", "simple-page-toc"],
     "pluginsConfig": {
       "edit-link": {
