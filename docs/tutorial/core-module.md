@@ -1,16 +1,16 @@
-= Core Module
+# Core Module
 :sectnums:
 :toc:
 
 This tutorial will guide you through some fundamental insights about Core Module.
 
 
-== Block Diagram
+## Block Diagram
 
 TODO: Insert block diagram and describe it.
 
 
-== Firmware programming
+## Firmware programming
 
 Firmware of Core Module is a program stored in an internal flash memory of the microcontroller.
 In this chapter we will call _programming_ a process of writing firmware into this internal flash memory.
@@ -24,7 +24,7 @@ There are several options how Core Module can be programmed:
 These interfaces are further explained in the chapters below.
 
 
-=== Using Serial-Wire-Debug (SWD) interface
+### Using Serial-Wire-Debug (SWD) interface
 
 This interface allows not only programming but also program debugging.
 
@@ -38,7 +38,7 @@ NOTE: Please, pay attention to a proper debug cable orientation.
 TODO: Insert the picture of Core Module with debug cable connected.
 
 
-=== Using integrated bootloader
+### Using integrated bootloader
 
 Bootloader is a small program delivered by STMicroelectronics during microcontroller production.
 This program is stored in read-only memory (ROM) and always co-exists next to the application firmware.
@@ -56,21 +56,23 @@ There are several communication interfaces that can be used to talk to the bootl
 We will describe the later one in the chapter below.
 
 
-=== Programming using USB DFU bootloader
+### Programming using USB DFU bootloader
 
 Invoking USB DFU bootloader can be done in just a few simple steps:
 
-. Make sure the *USB cable* is connected to your desktop (host).
+1. Make sure the *USB cable* is connected to your desktop (host).
 
-. Press the *BOOT button* on Core Module and keep it pressed. +
-  BOOT button is on the right side and is marked with letter "B".
+2. Press the *BOOT button* on Core Module and keep it pressed.
 
-. Press the *RESET button* on Core Module while BOOT button is still held. +
-  BOOT button is on the left side and is marked with letter "R".
+   BOOT button is on the right side and is marked with letter "B".
 
-. Release the *RESET button*.
+3. Press the *RESET button* on Core Module while BOOT button is still held.
 
-. Release the *BOOT button*.
+   BOOT button is on the left side and is marked with letter "R".
+
+4. Release the *RESET button*.
+
+5. Release the *BOOT button*.
 
 At this moment Core Module should enumerate to host as USB DFU-capable device.
 
