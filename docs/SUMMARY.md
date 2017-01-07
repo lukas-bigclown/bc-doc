@@ -3,6 +3,7 @@
 ## Tutorials
 * [Core Module](tutorial/core-module.adoc)
 * [Introduction](README.md)
+* [IFTT](README.md)
 
 ## Projects
 * [Workroom Project](projects/workroom.adoc)
