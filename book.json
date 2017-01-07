@@ -1,0 +1,7 @@
+{
+  "root": "./docs",
+  "title": "BigClown Documentation",
+  "description": "",
+  "author": "BigClown Labs s.r.o.",
+  "gitbook": ">=3.2.2"
+}
