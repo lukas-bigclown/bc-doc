@@ -109,51 +109,51 @@ In the chapters below we will show you how to program the firmware on individual
 . Press the RESET button to start the program.
 
 > Core Module must be in bootloader DFU mode prior executing last command.
-  For more information, please refer to this TODO <<Programming using USB DFU bootloader,section>>.
+  For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
 
 
 
 #### On macOS desktop
 
-. Open Terminal application.
+1. Open Terminal application.
 
-. Change directory (command `cd`) to folder with `firmware.bin` file.
+2. Change directory (command `cd`) to folder with `firmware.bin` file.
 
-. Make sure http://brew.sh[Homebrew] is installed in the system.
+3. Make sure http://brew.sh[Homebrew] is installed in the system.
 
-. Install `dfu-util` package by the following command:
-+
-    brew install dfu-util
+4. Install `dfu-util` package by the following command:
 
-. Program the firmware to Core Module by the following command:
-+
-    dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin
+   `brew install dfu-util`
 
-. Press the RESET button to start the program.
+5. Program the firmware to Core Module by the following command:
+
+   `dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin`
+
+6. Press the RESET button to start the program.
+
+> Core Module must be in bootloader DFU mode prior executing last command.
+For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
+
+
+
+#### On Ubuntu desktop
+
+1. Open Terminal application.
+
+2. Change directory (command `cd`) to folder with `firmware.bin` file.
+
+3. Install `dfu-util` package by the following command:
+
+   `sudo apt-get install dfu-util`
+
+4. Program the firmware to Core Module by the following command:
+
+   `dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin`
+
+5. Press the RESET button to start the program.
 
 NOTE: Core Module must be in bootloader DFU mode prior executing last command.
-For more information, please refer to this <<Programming using USB DFU bootloader,section>>.
-
-
-
-==== On Ubuntu desktop
-
-. Open Terminal application.
-
-. Change directory (command `cd`) to folder with `firmware.bin` file.
-
-. Install `dfu-util` package by the following command:
-+
-    sudo apt-get install dfu-util
-
-. Program the firmware to Core Module by the following command:
-+
-    dfu-util -s 0x08000000 -d 0483:df11 -a 0 -D firmware.bin
-
-. Press the RESET button to start the program.
-
-NOTE: Core Module must be in bootloader DFU mode prior executing last command.
-For more information, please refer to this <<Programming using USB DFU bootloader,section>>.
+For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
 
 
 == Firmware files
