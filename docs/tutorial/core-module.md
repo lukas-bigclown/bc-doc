@@ -164,7 +164,7 @@ So far you can download two binary files for link:../projects/workroom.html[Work
 
 * [Base unit](../../tutorial/core-module/bc-workroom-base.binary)
 
-* [Remote unit](/core-module/bc-workroom-remote.binary)
+* [Remote unit](../../tutorial/core-module/bc-workroom-remote.binary)
 
 
 ### Workroom Remote firmware features
