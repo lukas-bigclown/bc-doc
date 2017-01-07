@@ -4,7 +4,7 @@
 [no-bullet]
 *  
 +
-video::EFFVnbwtMNg[youtube, width=738, height=400]
+{%youtube%}EFFVnbwtMNg{%endyoutube%}
 
 
 == What is it?
