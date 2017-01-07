@@ -109,7 +109,7 @@ In the chapters below we will show you how to program the firmware on individual
 . Press the RESET button to start the program.
 
 > Core Module must be in bootloader DFU mode prior executing last command.
-  For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
+  For more information, please refer to this: [Programming using USB DFU bootloader](#programming-using-usb-dfu-bootloader)
 
 
 #### On macOS desktop
@@ -162,9 +162,9 @@ We still want to polish a few things to provide you with a proper start.
 
 So far you can download two binary files for link:../projects/workroom.html[Workroom project]:
 
-* [Base unit](../../tutorial/core-module/bc-workroom-base.binary)
+* [Base unit](core-module/bc-workroom-base.binary)
 
-* [Remote unit](../../tutorial/core-module/bc-workroom-remote.binary)
+* [Remote unit](core-module/bc-workroom-remote.binary)
 
 
 ### Workroom Remote firmware features
