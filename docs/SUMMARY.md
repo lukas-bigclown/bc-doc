@@ -2,7 +2,7 @@
 
 ## Tutorials
 
-* [Core Module](tutorial/core-module.adoc)
+* [Core Module](tutorial/core-module.md)
 * [Introduction](README.md)
 * [IFTT](README.md)
 
