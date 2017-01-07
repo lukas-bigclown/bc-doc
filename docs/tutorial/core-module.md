@@ -83,11 +83,11 @@ In the chapters below we will show you how to program the firmware on individual
 
 #### On Windows 10 64bit desktop
 
-. Open Command Prompt (command `cmd`).
+1. Open Command Prompt (command `cmd`).
 
-. Change directory (command `cd`) to folder with `firmware.bin` file.
+2. Change directory (command `cd`) to folder with `firmware.bin` file.
 
-. Download and execute http://zadig.akeo.ie/downloads/zadig_2.2.exe[Zadig 2.2].
+3. Download and execute http://zadig.akeo.ie/downloads/zadig_2.2.exe[Zadig 2.2].
 
 .. Select "Options" -> "List All Devices".
 
