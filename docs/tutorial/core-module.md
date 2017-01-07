@@ -61,19 +61,19 @@ We will describe the later one in the chapter below.
 
 Invoking USB DFU bootloader can be done in just a few simple steps:
 
-1. Make sure the *USB cable* is connected to your desktop (host).
+1. Make sure the **USB cable** is connected to your desktop (host).
 
-2. Press the *BOOT button* on Core Module and keep it pressed.
+2. Press the **BOOT button** on Core Module and keep it pressed.
 
    BOOT button is on the right side and is marked with letter "B".
 
-3. Press the *RESET button* on Core Module while BOOT button is still held.
+3. Press the **RESET button** on Core Module while BOOT button is still held.
 
    BOOT button is on the left side and is marked with letter "R".
 
-4. Release the *RESET button*.
+4. Release the **RESET button**.
 
-5. Release the *BOOT button*.
+5. Release the **BOOT button**.
 
 At this moment Core Module should enumerate to host as USB DFU-capable device.
 
@@ -88,7 +88,7 @@ In the chapters below we will show you how to program the firmware on individual
 
 2. Change directory (command `cd`) to folder with `firmware.bin` file.
 
-3. Download and execute http://zadig.akeo.ie/downloads/zadig_2.2.exe[Zadig 2.2].
+3. Download and execute [Zadig 2.2](http://zadig.akeo.ie/downloads/zadig_2.2.exe).
 
    1. Select "Options" -> "List All Devices".
 
@@ -110,7 +110,6 @@ In the chapters below we will show you how to program the firmware on individual
 
 > Core Module must be in bootloader DFU mode prior executing last command.
   For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
-
 
 
 #### On macOS desktop
@@ -135,7 +134,6 @@ In the chapters below we will show you how to program the firmware on individual
 For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
 
 
-
 #### On Ubuntu desktop
 
 1. Open Terminal application.
@@ -152,42 +150,45 @@ For more information, please refer to this TODO: <<Programming using USB DFU boo
 
 5. Press the RESET button to start the program.
 
-NOTE: Core Module must be in bootloader DFU mode prior executing last command.
+> Core Module must be in bootloader DFU mode prior executing last command.
 For more information, please refer to this TODO: <<Programming using USB DFU bootloader,section>>.
 
 
-== Firmware files
+## Firmware files
 
 It is possible to build your own firmware.
-But not until we release the source codes on our https://github.com/bigclownlabs[GitHub account].
+But not until we release the source codes on our [GitHub account](https://github.com/bigclownlabs).
 We still want to polish a few things to provide you with a proper start.
 
 So far you can download two binary files for link:../projects/workroom.html[Workroom project]:
 
-* link:core-module/bc-workroom-base.binary[Base unit]
-* link:core-module/bc-workroom-remote.binary[Remote unit]
+* [Base unit](core-module/bc-workroom-base.binary)
+
+* [Remote unit](core-module/bc-workroom-remote.binary)
 
 
-=== Workroom Remote firmware features
+### Workroom Remote firmware features
 
 * Automatic sending of temperature and humidity every 30 seconds
+
 * Sends message when button pressed
+
 * Sends message when pin P8 is grounded or released
 
 
-== Firmware building
+## Firmware building
 
 TODO: Describe firmware build process with arm-none-eabi-gcc + Makefile.
 
 
-== Debugging
+## Debugging
 
 
-=== J-link Ozone Debugger
+### J-link Ozone Debugger
 
 J-link Ozone is a free graphical debugger for Windows, Linux and macOS.
 It provides usual debugger features like breakpoints and single step, advanced features like live watch, graphing of variables and MCU register view (from SVD file).
-Download the debugger from https://www.segger.com/downloads/jlink#Ozone[J-link Ozone download page].
+Download the debugger from [J-link Ozone download page](https://www.segger.com/downloads/jlink#Ozone).
 
 To start the Ozone debugging simply run `make ozone`.
 You can run also Ozone manually and in `File > Open...` load configruration file `bc-core-module/tools/ozone/ozone.jdebug`.
