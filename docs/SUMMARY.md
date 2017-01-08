@@ -32,4 +32,6 @@
 
 ## Academy
 
+* [I2C - Communication Interface](/academy/i2c/README.md)
+
 * [WebSocket - Real-time Protocol](/academy/websocket/README.md)
