@@ -36,7 +36,7 @@ Remote unit is a battery-operated wireless node measuring temperature and humidi
 
 The whole concept is best described by the following diagram:
 
-![](images/workroom/block-diagram.png)
+![](images/block-diagram.png)
 
 
 ## What will we need?
@@ -61,7 +61,7 @@ Individual components in the set are:
 * 1x Power adapter for Raspberry Pi 3
 * 1x Power adapter for Power Module
 
-![](images/workroom/workroom-set.png)
+![](images/workroom-set.png)
 
 You will also need:
 
@@ -81,42 +81,42 @@ You can also follow these step by step instructions:
 
 1. *Build your Remote unit*
 
-   ![](images/workroom/build-remote.png)
+   ![](images/build-remote.png)
 
 2. *Build your Base unit*
 
-   ![](images/workroom/build-base.png)
+   ![](images/build-base.png)
 
 3. *Connect LED strip to Base unit*
 
-   ![](images/workroom/connect-led-strip.png)
+   ![](images/connect-led-strip.png)
 
 4. *Connect Base unit to Raspberry Pi using MicroUSB cable*
 
-   ![](images/workroom/connect-base-to-rpi.png)
+   ![](images/connect-base-to-rpi.png)
 
 5. *Connect Ethernet cable to Raspberry Pi*
 
-   ![](images/workroom/connect-ethernet-to-rpi.png)
+   ![](images/connect-ethernet-to-rpi.png)
 
 6. *Connect power adapter to Base unit and plug it to AC-line*
 
-   ![](images/workroom/connect-power-to-base.png)
+   ![](images/connect-power-to-base.png)
 
 7. *Connect power adapter to Raspberry Pi and plug it to AC-line*
 
-   ![](images/workroom/connect-power-to-rpi.png)
+   ![](images/connect-power-to-rpi.png)
 
 8. *Insert batteries to your Remote unit*
 
-   ![](images/workroom/insert-batteries.png)
+   ![](images/insert-batteries.png)
 
 9. *Activate pairing mode on Base unit*
 
    Press and hold BOOT button on Core Module of Base unit until red LED on Core Module starts blinking.
    BOOT button is marked on Core Module with letter "B". Pairing mode on Base unit is now active until pairing signal is received from the Remote unit.
 
-![](images/workroom/pairing-base.png)
+![](images/pairing-base.png)
 
 10. *Transmit pairing signal on Remote unit*
 
@@ -124,14 +124,14 @@ You can also follow these step by step instructions:
     BOOT button is marked on Core Module with letter "B".
     Now pairing signal has been sent and Remote unit should stop blinking.
 
-    ![](images/workroom/pairing-remote.png)
+    ![](images/pairing-remote.png)
 
 11. *Turn on the light*
 
     Shortly press BOOT button either on Base unit or Remote unit to turn on the light.
     You can use this button any time you will want to turn the LED strip on or off.
 
-    ![](images/workroom/turn-on-light.png)
+    ![](images/turn-on-light.png)
 
 You can see pairing setup and testing the functionality in this short video:
 
