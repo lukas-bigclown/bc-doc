@@ -1,4 +1,4 @@
-= WebSocket - Real-time Protocol
+# WebSocket - Real-time Protocol
 
 Web programmers who have done more than just work with content management systems are certainly familiar with the principle of web sockets.
 Basically it is a communication link established between two processes using IP technology.
@@ -15,26 +15,28 @@ Unlike AJAX, the connection is constantly open with data being sent from either 
 WebSocket has direct support for UTF-8 and follows the CORS security model as well as AJAX.
 
 
-== Using WebSocket
+## Using WebSocket
 
-https://html.spec.whatwg.org/multipage/comms.html#network[WebSocket] offer a very simple interface to establish connections for the bi-directional exchange of messages between client and server.
+[WebSocket](https://html.spec.whatwg.org/multipage/comms.html#network) offers a very simple interface to establish connections for the bi-directional exchange of messages between client and server.
 On the client side (most often in the browser) the WebSocket class is available.
 You can create instances of this class, and thus establish a connection with the server (provided, of course, that the server supports this technology).
 
-[source,javascript]
-----
-var myWebSocket = new WebSocket("ws://www.server.cz/sluzba");
-----
+```javascript
+var myWebSocket = new WebSocket("ws://server.com/service");
+```
 
-As you can see, the prefix `ws://` is used for the WebSocket URL. If the connection uses SSL/TLS, then `wss://` can be used.
+As you can see, the prefix `ws://` is used for the WebSocket URL.
+If the connection uses SSL/TLS, then `wss://` can be used.
 When creating a new WebSocket class object, a connection is established using the ws/wss protocol and messages can be sent.
 
 WebSocket messages are not sophisticated objects - just a simple string, and their format depends on the developer’s application.
 
 A WebSocket object offers four events called `onopen`, `onmessage`, `onerror` and `onclose`.
+
 The names are fairly self-explanatory:
 
 * Event `onopen` is called when opening a connection.
+
   This can serve to indicate that messages can now be sent.
 
 * Event `onclose` announces the connection has been closed.
@@ -45,8 +47,7 @@ The names are fairly self-explanatory:
   As the name suggests, it is called when a message comes from the server.
   The body of the message is transmitted in the attributes of the event.
 
-[source,javascript]
-----
+```javascript
 myWebSocket.onopen = function(e) {
   console.log("Connection opened.");
 };
@@ -58,34 +59,31 @@ myWebSocket.onmessage = function(e) {
 myWebSocket.onclose = function(e) {
   console.log("Connection closed.");
 };
-----
+```
 
 To send messages use method `send(data)`.
 The parameters are the string, blob or ArrayBuffer to be sent.
 
 Example:
 
-[source,javascript]
-----
+```javascript
 myWebSocket.send("Hello server!");
-----
+```
 
 When done running the application, it is possible to close the connection by using method `close()`.
 
 The server side requires more than just a regular HTTP server – a server that supports WebSocket technology is needed.
 One possibility is to use special services, e.g. a Kaazing or Jetty server, or possibly a local WebSocket node.
-There is also https://github.com/google/pywebsocket[pywebsocket], an implementation written in Python that functions as a stand-alone server, but that can also work with an Apache server (mod_pywebsocket).
-Here at BigClown, we decided to use an https://nginx.org[nginx HTTP server], which in addition to other functions also offers direct ws/wss integration.
+There is also [pywebsocket](https://github.com/google/pywebsocket), an implementation written in Python that functions as a stand-alone server, but that can also work with an Apache server (mod_pywebsocket).
 
 
-== Examples of using WebSocket
+## Examples of using WebSocket
 
 Let’s look at a simple example that sets up a WebSocket connection with the Clown.Hub server, sends a message, and displays the received message.
 
 First, we prepare the framework for the application that will serve the WebSocket:
 
-[source,javascript]
-----
+```javascript
 var websocket;
 
 var wsConnect = function(wsUri) {
@@ -120,24 +118,23 @@ function onMessage(evt) {
 function onError(evt) {
   console.log("Error: " + evt.data);
 }
-----
+```
 
 We initialize the connection by calling the wsConnect function, where we pass on the WebSocket address to the server.
 
-For example: +
-`wss://localhost/auth/clown-talk-server_nodes_bridge_0`.
+For example: `wss://localhost/auth/clown-talk-server_nodes_bridge_0`.
 
-Part of the URL can also be the name and password for the connection in the form `name:password@server`, or specifically: +
+Part of the URL can also be the name and password for the connection in the form `name:password@server`, or specifically:
 `wss://clown:bigclown@localhost/auth/clown-talk-server_nodes_bridge_0`.
 
-After calling the `wsConnect` function, the connection is established and if everything is in order, the `onOpen` function is called.
-This sends an initialization message to Clown.Hub.
+After calling the `wsConnect` function, the connection is established and if everything is in order, the `onOpen` function is called. This function sends an initialization message to Clown.Hub.
+
 The `onMessage` function responds to messages received - it receives them, expects them to be in Clown.Talk format, parses them and displays them on the data received console.
 
 Messages can be sent easily using `websocket.send()`.
+
 For example, we can send a message for a relay:
 
-[source,javascript]
-----
-websocket.send("[\"relay/i2c0-3b/set\", {\"state\":false}]");
-----
+```javascript
+websocket.send("[\"relay/i2c0-3b/set\", {\"state\": false}]");
+```

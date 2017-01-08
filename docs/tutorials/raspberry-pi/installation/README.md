@@ -1,4 +1,4 @@
-# Install Raspberry Pi
+# Raspberry Pi - Installation
 
 {% set raspbian_zip = "bc-raspbian-v1.0.1-armhf-rpi.zip" %}
 {% set raspbian_img = "bc-raspbian-v1.0.1-armhf-rpi.img" %}
