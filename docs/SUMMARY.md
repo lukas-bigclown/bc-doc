@@ -8,7 +8,7 @@
 * [Mosquitto - MQTT Broker](tutorials/mosquitto.md)
 
 ## Projects
-* [Workroom Project](projects/workroom.md)
+* [Workroom Project](projects/workroom/README.md)
 * [Bridge Project](projects/bridge.md)
 
 ## Integrations
