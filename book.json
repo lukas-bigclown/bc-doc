@@ -4,11 +4,14 @@
   "description": "",
   "author": "BigClown Labs s.r.o.",
   "gitbook": ">= 3.0.0",
-  "plugins": ["edit-link", "youtubex", "simple-page-toc", "heading-anchors"],
-    "pluginsConfig": {
-      "edit-link": {
-        "base": "https://github.com/hubpav/bc-doc/edit/master/docs",
-        "label": "Edit This Page"
+  "plugins": ["edit-link", "youtubex", "simple-page-toc", "heading-anchors", "github"],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/hubpav/bc-doc/edit/master/docs",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/hubpav/bc-doc"
     }
   }
 }
