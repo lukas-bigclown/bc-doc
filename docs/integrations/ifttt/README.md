@@ -15,7 +15,7 @@ The Maker service is useful for BigClown Hub integration.
 
 ## How to create a new Applet?
 
-1. The first step is to create your account on [**IFTTT**](https://ifttt.com/).
+1. The first step is to create your account on [**IFTTT**](https://ifttt.com).
 
 2. After login, click on your username in the top-right corner and open menu, then Select **"New Applet"**.
 

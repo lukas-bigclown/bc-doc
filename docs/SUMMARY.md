@@ -12,5 +12,8 @@
 * [Bridge Project](projects/bridge/README.md)
 
 ## Integrations
-* [IFTTT - If This Then That](integrations/ifttt.md)
-* [Node RED - Visual Tool for IoT](integrations/node-red.md)
+* [Blynk - Mobile App Builder](integrations/blynk/README.md)
+* [Node RED - Visual Tool for IoT](integrations/node-red/README.md)
+* [IFTTT - If This Then That](integrations/ifttt/README.md)
+
+## Academy
