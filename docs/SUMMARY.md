@@ -7,7 +7,7 @@
 
 * [Core Module](/tutorials/core-module/README.md)
 
-* [Raspberry Pi](/tutorials/raspberry-pi/installation/README.md)
+* Raspberry Pi
 
   * [Installation](/tutorials/raspberry-pi/installation/README.md)
 
