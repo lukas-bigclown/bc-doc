@@ -9,7 +9,7 @@
 
 ## Projects
 * [Workroom Project](projects/workroom/README.md)
-* [Bridge Project](projects/bridge.md)
+* [Bridge Project](projects/bridge/README.md)
 
 ## Integrations
 * [IFTTT - If This Then That](integrations/ifttt.md)

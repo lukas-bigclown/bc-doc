@@ -37,11 +37,11 @@ We will install BigClown's version of Raspbian - the official and the most popul
 
 3. Unzip the downloaded image.
 
-   You can use http://www.7-zip.org[7-Zip] to do it.
+   You can use [7-Zip](http://www.7-zip.org) to do it.
 
 4. Write `{{ raspbian_img }}` to the MicroSD card.
 
-   You can use https://sourceforge.net/projects/win32diskimager/files/latest/download[Win32 Disk Imager] to do it.
+   You can use [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/files/latest/download) to do it.
 
    > Win32 Disk Imager must be run under administrator privileges.
 
@@ -156,7 +156,7 @@ You can access the device in two ways:
 
 ### On Windows desktop
 
-1. Download http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html[PuTTY].
+1. Download [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 2. Open PuTTY and open SSH session:
 
