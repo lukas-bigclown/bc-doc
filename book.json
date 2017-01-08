@@ -6,6 +6,9 @@
   "gitbook": ">= 3.0.0",
   "plugins": ["edit-link", "youtubex", "simple-page-toc", "anchorjs", "github", "gtm", "richquotes"],
   "pluginsConfig": {
+    "theme-default": {
+      "showLevel": true
+    },
     "edit-link": {
       "base": "https://github.com/hubpav/bc-doc/edit/master/docs",
       "label": "Edit This Page"
