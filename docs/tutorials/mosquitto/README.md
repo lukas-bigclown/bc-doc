@@ -9,9 +9,9 @@
 
 * Each **message** consists of **topic** and **payload**.
 
-* Topics describe the message.
+* Topics describe the message category.
 
-* Topics use tree-like structure separating individual levels with `/` symbol.
+* Topics use tree-like structure - individual levels are separated with `/` symbol.
 
 * Example topics are `bedroom/temperature` or `kitchen/light/set`.
 
@@ -101,7 +101,7 @@ Topic command will subscribe to all topics (`#`) on remote server under `remote/
 
 For debugging and diagnostic purposes, you can use a tool with graphical user interface - [Eclipse Paho mqtt-spy](https://github.com/eclipse/paho.mqtt-spy).
 
-> This tool needs JRE 8 to be installed on the host machine.
+> **Important** This tool needs JRE 8 to be installed on the host machine.
 
 * For more information about this tool, see: https://github.com/eclipse/paho.mqtt-spy/wiki
 
@@ -109,7 +109,7 @@ For debugging and diagnostic purposes, you can use a tool with graphical user in
 
 After installation connect to your MQTT's broker IP address and subscribe to topics or start publishing messages.
 
-> This tool supports subscription scripts written in JavaScript.
-> You can automate your tasks with this feature.
+> **Tip** This tool supports subscription scripts written in JavaScript.
+>         You can automate your tasks with this feature.
 
-![](images/mosquitto/mqtt-spy.png)
+![](images/mqtt-spy.png)

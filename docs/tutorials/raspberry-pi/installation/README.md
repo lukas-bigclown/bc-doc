@@ -1,10 +1,10 @@
-# Raspberry Pi - Installation
+# Install Raspberry Pi
 
 {% set raspbian_zip = "bc-raspbian-v1.0.1-armhf-rpi.zip" %}
 {% set raspbian_img = "bc-raspbian-v1.0.1-armhf-rpi.img" %}
-{% set note_sudo = "“sudo” means the process will start with administrator privileges and may require your account password (if you are eligible for administrator rights)." %}
+{% set note_sudo = "**Note** “sudo” means the process will start with administrator privileges and may require your account password (if you are eligible for administrator rights)." %}
 
-> If you already have your Raspberry Pi with Raspbian running on it, you can skip to [Install BigClown packages on existing system](#install-bigclown-packages-on-existing-system) to see how to install BigClown packages to your existing system.
+> **Important** If you already have your Raspberry Pi with Raspbian running on it, you can skip to [Install BigClown packages on existing system](#install-bigclown-packages-on-existing-system) to see how to install BigClown packages to your existing system.
 
 This tutorial will guide you through a step-by-step installation procedure of Raspberry Pi.
 It has been tested on Raspberry Pi 3 (Model B) but it will probably work on Raspberry Pi 2 as well.
@@ -43,7 +43,7 @@ We will install BigClown's version of Raspbian - the official and the most popul
 
    You can use [Win32 Disk Imager](https://sourceforge.net/projects/win32diskimager/files/latest/download) to do it.
 
-   > Win32 Disk Imager must be run under administrator privileges.
+   > **Note** Win32 Disk Imager must be run under administrator privileges.
 
 
 ### On macOS desktop
@@ -124,8 +124,9 @@ We will install BigClown's version of Raspbian - the official and the most popul
    sudo dd if={{ raspbian_img }} of=/dev/sdX bs=1M status=progress
    ```
 
-   This will take some time.
-   If you get a “permission denied” message, please make sure your MicroSD card is not write-protected (e.g. by an SD card adapter).
+   > **Info** This will take some time.
+
+   > **Tip** If you get a “permission denied” message, please make sure your MicroSD card is not write-protected (e.g. by an SD card adapter).
 
 8. Eject the MicroSD card (replace X with the appropriate identifier):
 
@@ -239,7 +240,7 @@ This is a brief description of changes:
 
 ## Install BigClown packages on existing system
 
-> Follow this procedure only if you have already running Raspberry Pi with Raspbian distribution on it and you have skipped all the previous steps.
+> **Important** Follow this procedure only if you have already running Raspberry Pi with Raspbian distribution on it and you have skipped all the previous steps.
 
 1. Log in to SSH terminal.
 
