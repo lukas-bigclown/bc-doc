@@ -1,16 +1,15 @@
-= MQTT - Messaging via Broker
-:imagesdir: images
+# MQTT - Messaging via Broker
 
-MQTT (formerly: Message Queuing Telemetry Transport, today MQTT) is a simple and lightweight protocol for transmitting messages between clients through a central point/broker.
+MQTT (formerly Message Queuing Telemetry Transport, today MQTT) is a simple and lightweight protocol for transmitting messages between clients through a central point/broker.
 Thanks to its compact simplicity it can easily be implemented in systems with “small” processors and has spread relatively quickly.
-It was designed at IBM, is backed today by the Eclipse Foundation and recently underwent OASIS standardization.
+It was designed at IBM, is backed today by the Eclipse Foundation and recently went through OASIS standardization.
 
 The MQTT protocol is transmitted via TCP and uses a publisher - subscriber design model.
 There is one central point (MQTT broker), that handles the exchange of messages.
 Messages are sorted into topics, and devices either publish in the given topic, meaning that they send data to the broker, which stores and distributes them to other devices, or they subscribe to a topic or topics, and the broker then sends all messages with the given topic to the device.
 Of course one device can at the same time be a publisher for some topics and a subscriber for others.
 
-The content of messages is not given or required in any way; MQTT is “payload agnostic”.
+The content of messages is not given or required in any way; MQTT is “payload-agnostic”.
 The content of messages is simply binary data that is transmitted.
 JSON, BSON and text messages are used most often, but it can really be anything.
 The size of the message in the current version of the protocol is limited to almost 256MB, but most messages are much smaller...
@@ -20,7 +19,7 @@ It establishes three levels of QoS (Quality of Service) - which pertains to mess
 However, a client need not support all three levels of QoS.
 
 
-== MQTT in Detail
+## MQTT in Detail
 
 Messages in MQTT belong to certain topics.
 Each message belongs to a single topic.
@@ -30,7 +29,7 @@ Or perhaps `house/bedroom/light`.
 Topics in the MQTT chain are in UTF-8, so naming with diacritical marks is not a problem.
 
 Hierarchy is not fixed, it depends on the application and how you design it.
-Correctly designing the hierachy may be no trivial task.
+Designing appropriate hierarchy may be no trivial task.
 The best structure is not always the “natural” one.
 In this regard it is important to consider the data model and interface and find a suitable arrangement where topics logically go together.
 
@@ -47,14 +46,14 @@ Subscribing to topic `building1/floor1/#` means that messages will be received w
 There is one more note regarding naming convention:
 If the name of the topic starts with the `$` symbol, this is a special topic publishers cannot publish to.
 This is used as a special topic for messages which the broker needs to send.
-The most widely used approach is to begin topics with `$SYS/` - these usages are not yet fixed and a list of recommended topic names is available at MQTT Wiki: https://github.com/mqtt/mqtt.github.io/wiki/SYS-Topics
+The most widely used approach is to begin topics with `$SYS/` - these usages are not yet fixed and a list of recommended topic names is available at [MQTT Wiki](https://github.com/mqtt/mqtt.github.io/wiki/SYS-Topics).
 
 
-== Exchanging messages
+## Exchanging Messages
 
 Initially the client (device, node) establishes a connection with the broker via TCP.
 This most often uses port 1883, or port 8883 for a connection via TLS.
-Another approach that is used is a connection via WebSockets (ws/wss), most often to ports 8080/8081 (or via reverse proxy to ports 80 and 443), but naturally it is possible to set communication in any way.
+Another approach that is used is a connection via [WebSocket](/academy/websocket/README.md) (ws/wss), most often to ports 8080/8081 (or via reverse proxy to ports 80 and 443), but naturally it is possible to set communication in any way.
 
 After establishing a connection, the device sends a `CONNECT` message, usually with a clean session flag to ensure that the session starts without any subscriptions to any topics.
 Connection can also take place with some basic verification of name and password.
@@ -80,7 +79,7 @@ If the connection is lost, the broker can send for a certain topic a “last wil
 This message is not required.
 
 
-== QoS & Retain
+## QoS & Retain
 
 So we have already taken a brief look at Quality of Service.
 We mentioned that there are three levels, 0, 1 and 2, that differ depending on degree of confirmation and manner of ensuring delivery.
@@ -105,8 +104,7 @@ This concludes the exchange.
 
 With respect to QoS, the broker sends the message on the level that it was received, with the option of lowering the level if the client can only handle a lower level.
 
-.MQTT QoS Levels
-image::mqtt-qos-levels.png[]
+![](images/mqtt-qos-levels.png)
 
 In addition to QoS, a message can also set the retain flag, i.e. a symbol that says that the broker should not delete the message after sending, but should save it and send it to new subscribers for the given topic.
 The broker always sends the last saved message with a retain flag.
@@ -121,7 +119,7 @@ If a message is received by the broker at QoS 2, but the subscriber request a ma
 Of course, this means that the subscriber may get the message multiple times (because QoS 1 does not guarantee delivery “exactly once”).
 
 
-==== An example of MQTT in practice
+### An example of MQTT in practice
 
 Let us assume the simplest situation possible, turning on a light bulb with a switch.
 
@@ -130,12 +128,12 @@ The switch will be the publisher, and it will publish in the topic room/switch (
 
 Something like this:
 
-image::mqtt-pub-sub-simple.png[]
+![](images/mqtt-pub-sub-simple.png)
 
 The second approach is more complex and requires a certain amount of intelligence.
 The bulb need not listen only to the switch; the pathway may include a minimal amount of intelligence that evaluates messages from publishers and based on these sends instructions to subscribers.
 
-image::mqtt-pub-sub-extended.png[]
+![](images/mqtt-pub-sub-extended.png)
 
 With this kind of arrangement it is much easier to give the entire system another level of abstraction.
 We can easily logically rearrange the entire system if necessary or add logic that the devices themselves do not implement - for example a step switch with a timer, or a “cross” switch where we control one light from multiple places, or other intelligent behavior.
@@ -146,7 +144,7 @@ You will find MQTT in cloud services (AWS IoT, Azure IoT), or in various home au
 Without exaggeration it can be said that MQTT is really one of few IoT standards.
 
 
-=== MQTT and BigClown
+### MQTT and BigClown
 
 The BigClown Hub enables communcation via MQTT.
 Defines topics and subtopics for data, and also defines the format of messages sent.
@@ -159,63 +157,26 @@ Each sensor and actuator has its own subtopic, which gives the class of the devi
 
 The following table gives a summary of all the devices available in Bridge project:
 
-|===
-|Part of topic |Payload key
-
-|led/-
-|state
-
-|thermometer/i2c0-48
-|temperature
-
-|thermometer/i2c1-48
-|
-
-|thermometer/i2c0-49
-|
-
-|thermometer/i2c1-49
-|
-
-|lux-meter/i2c0-44
-|illuminance
-
-|lux-meter/i2c1-44
-|
-
-|lux-meter/i2c0-45
-|
-
-|lux-meter/i2c1-45
-|
-
-|barometer/i2c0-60
-|pressure, altitude
-
-|barometer/i2c1-60
-|
-
-|humidity-sensor/i2c0-40
-|relative-humidity
-
-|humidity-sensor/i2c0-41
-|
-
-|humidity-sensor/i2c1-40
-|
-
-|humidity-sensor/i2c1-41
-|
-
-|co2-sensor/i2c0-38
-|concentration
-
-|relay/i2c0-3b
-|state
-
-|relay/i2c0-3f
-|
-|===
+| Part of topic           | Payload key        |
+| ----------------------- | ------------------ |
+| led/-                   | state              |
+| thermometer/i2c0-48     | temperature        |
+| thermometer/i2c1-48     |                    |
+| thermometer/i2c0-49     |                    |
+| thermometer/i2c1-49     |                    |
+| lux-meter/i2c0-44       | illuminance        |
+| lux-meter/i2c1-44       |                    |
+| lux-meter/i2c0-45       |                    |
+| lux-meter/i2c1-45       |                    |
+| barometer/i2c0-60       | pressure, altitude |
+| barometer/i2c1-60       |                    |
+| humidity-sensor/i2c0-40 | relative-humidity  |
+| humidity-sensor/i2c0-41 |                    |
+| humidity-sensor/i2c1-40 |                    |
+| humidity-sensor/i2c1-41 |                    |
+| co2-sensor/i2c0-38      | concentration      |
+| relay/i2c0-3b           | state              |
+| relay/i2c0-3f           |                    |
 
 In their basic settings the yellow highlighted devices do not require soldering to the tag or module.
 
@@ -230,23 +191,25 @@ If the particular sensor measures multiple variables, the JSON object will have 
 
 Examples:
 
- nodes/bridge/0/lux-meter/i2c0-44 : {"illuminance": [829.44, "lux"]}
- nodes/bridge/0/lux-meter/i2c1-44 : {"illuminance": [994.56, "lux"]}
- nodes/bridge/0/barometer/i2c1-60 : {"pressure": [97.062, "kPa"], "altitude": [361.3, "m"]}
+```
+nodes/bridge/0/lux-meter/i2c0-44 {"illuminance": [829.44, "lux"]}
+nodes/bridge/0/lux-meter/i2c1-44 {"illuminance": [994.56, "lux"]}
+nodes/bridge/0/barometer/i2c1-60 {"pressure": [97.062, "kPa"], "altitude": [361.3, "m"]}
+```
 
 You see the values from two lux meters (each on a different bus) and from the barometer (here there are two values, pressure and altitude).
 
 
-== References
+## References
 
-* MQTT +
-http://mqtt.org/
+* MQTT
+  http://mqtt.org/
 
-* List of clients for MQTT: +
-http://www.hivemq.com/blog/seven-best-mqtt-client-tools
+* List of clients for MQTT:
+  http://www.hivemq.com/blog/seven-best-mqtt-client-tools
 
-* Best practices for MQTT: +
-http://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices
+* Best practices for MQTT:
+  http://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices
 
-* Installation of Mosquito MQTT broker on Raspberry Pi: +
-http://www.4makers.info/instalace-mosquitto-na-raspi-ze-zdrojovych-kodu/
+* Installation of Mosquito MQTT broker on Raspberry Pi:
+  http://www.4makers.info/instalace-mosquitto-na-raspi-ze-zdrojovych-kodu/

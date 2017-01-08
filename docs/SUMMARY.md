@@ -34,4 +34,6 @@
 
 * [I2C - Communication Interface](/academy/i2c/README.md)
 
+* [MQTT - MQTT - Messaging via Broker](/academy/mqtt/README.md)
+
 * [WebSocket - Real-time Protocol](/academy/websocket/README.md)
