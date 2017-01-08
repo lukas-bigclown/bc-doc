@@ -3,8 +3,8 @@
   "title": "BigClown Documentation",
   "description": "",
   "author": "BigClown Labs s.r.o.",
-  "gitbook": ">= 3.0.0",
-  "plugins": ["edit-link", "youtubex", "simple-page-toc", "anchorjs", "github", "gtm", "richquotes", "footer"],
+  "gitbook": ">=3.0.0",
+  "plugins": ["edit-link", "youtubex", "simple-page-toc", "anchorjs", "github", "gtm", "richquotes"],
   "pluginsConfig": {
     "theme-default": {
       "showLevel": true
@@ -21,9 +21,6 @@
     },
     "gtm": {
       "token": "GTM-N2WMQSW"
-    },
-    "layout": {
-      "footerPath" : "layouts/footer.html"
     }
   }
 }
