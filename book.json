@@ -4,7 +4,7 @@
   "description": "",
   "author": "BigClown Labs s.r.o.",
   "gitbook": ">= 3.0.0",
-  "plugins": ["edit-link", "youtubex", "simple-page-toc", "anchorjs", "github", "gtm", "richquotes"],
+  "plugins": ["edit-link", "youtubex", "simple-page-toc", "anchorjs", "github", "gtm", "richquotes", "page-footer"],
   "pluginsConfig": {
     "theme-default": {
       "showLevel": true

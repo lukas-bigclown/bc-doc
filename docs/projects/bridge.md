@@ -163,4 +163,4 @@ If you want to know more about MQTT, follow these links:
 
 * [MQTT - Messaging via Broker](../academy/mqtt.md)
 
-* [Mosquitto - MQTT Broker](../tutorial/mosquitto.html)
+* [Mosquitto - MQTT Broker](../tutorials/mosquitto.md)
