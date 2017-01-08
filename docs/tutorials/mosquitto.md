@@ -21,7 +21,7 @@
 
 * In subscribe topics the wildcard `+` can be used for single level subscription and symbol `#` for multi level subscription.
 
-  > Symbol `#` can only be used at the end of subscribed topic.
+  > **Note** Symbol `#` can only be used at the end of subscribed topic.
 
   [Click here to see more on topics](http://www.hivemq.com/blog/mqtt-essentials-part-5-mqtt-topics-best-practices)
 
