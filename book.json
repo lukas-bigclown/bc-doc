@@ -21,7 +21,7 @@
     },
     "gtm": {
       "token": "GTM-N2WMQSW"
-    }
+    },
     "layout": {
       "footerPath" : "layouts/footer.html"
     }
