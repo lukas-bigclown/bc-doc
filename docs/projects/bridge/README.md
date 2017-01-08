@@ -161,6 +161,6 @@ docker exec hub mosquitto_pub -t nodes/bridge/0/led/-/set -m '{"state": "3-dot"}
 
 If you want to know more about MQTT, follow these links:
 
-* [MQTT - Messaging via Broker](/academy/mqtt.md)
+* [MQTT - Messaging via Broker](/academy/mqtt/README.md)
 
-* [Mosquitto - MQTT Broker](/tutorials/mosquitto.md)
+* [Mosquitto - MQTT Broker](/tutorials/mosquitto/README.md)
