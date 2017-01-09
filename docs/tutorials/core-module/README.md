@@ -162,9 +162,9 @@ We still want to polish a few things to provide you with a proper start.
 
 So far you can download two binary files for [Workroom project](/projects/workroom/README.md):
 
-* [Base unit](core-module/bc-workroom-base.binary)
+* [Base unit](https://drive.google.com/open?id=0B5pXL_JAACMvM284WW9sSFNCWkE)
 
-* [Remote unit](core-module/bc-workroom-remote.binary)
+* [Remote unit](https://drive.google.com/open?id=0B5pXL_JAACMvVkNRT2dPd1VJRlE)
 
 
 ### Workroom Remote firmware features

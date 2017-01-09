@@ -153,7 +153,7 @@ The topic addresses a specific node.
 In the case of BigClown Bridge project it is the Bridge Module, and its topic is `nodes/bridge/0/#`.
 If you connect another Bridge Module, the topic will be `nodes/bridge/1` etc.
 
-Each sensor and actuator has its own subtopic, which gives the class of the device (thermometer, barometer etc.), and says where the device is connected, i.e. to which I^2^C bus and with what address.
+Each sensor and actuator has its own subtopic, which gives the class of the device (thermometer, barometer etc.), and says where the device is connected, i.e. to which I²C bus and with what address.
 
 The following table gives a summary of all the devices available in Bridge project:
 
